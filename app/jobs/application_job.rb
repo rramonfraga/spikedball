@@ -1,2 +1,2 @@
-class ApplicationJob < ActiveJob::Template
+class ApplicationJob < ActiveJob::Base
 end
