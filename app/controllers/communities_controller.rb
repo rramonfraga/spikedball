@@ -19,7 +19,7 @@ class CommunitiesController < ApplicationController
       render(:new)
     else
       current_user.communities << @community
-      redirect_to(communities_path(@community))
+      redirect_to action: 'index', controller: 'welcome', community_id: @community.id
     end
   end
 
