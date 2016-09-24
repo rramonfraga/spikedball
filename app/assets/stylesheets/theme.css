@@ -1,0 +1,88 @@
+@font-face {
+  font-family: "Blood Blocks";
+  src: url(/assets/Blood-Blocks.ttf) format("truetype");
+}
+
+.btn-blood{
+  color: #ecf0f1;
+  background-color: #65C5E4;
+  border-color: #3c0000;
+}
+
+.btn-create-championship{
+  color: white;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+.btn-edit-player{
+  margin-top: 15px;
+}
+.btn-edit-player a{
+  color:#ecf0f1;
+  font-size: 18px;
+}
+.btn-edit-player .btn-blood{
+  color:#ecf0f1;
+  font-size: 18px;
+}
+
+.input-group label:hover{
+  color:#65C5E4;
+}
+.input-group label{
+  color:#004377;
+  cursor: pointer;
+  cursor: hand;
+}
+
+
+.championship .match{
+  color: #65C5E4;
+  font-size: 16px;
+  padding: 6px 15px;
+}
+.championship .match.btn{
+  color: #ecf0f1;
+  font-size: 16px;
+}
+.championship .match.btn:hover{
+  background-color: #004377;
+}
+
+
+a .skill {
+  color: #65C5E4;
+}
+.row-header{
+  background-color: #65C5E4;
+  color:#ecf0f1;
+  padding: 5px;
+}
+.row-header-create{
+  font-size: 18px;
+  padding: 7px;
+}
+.row-main{
+  font-size: 16px ;
+  padding: 5px;
+}
+.row-main:nth-of-type(even){
+  background-color: #ddd;
+}
+.row-main:nth-of-type(odd){
+  background-color: #eee;
+}
+.row-main-create .ma.st.ag.av{
+  padding: 9px;
+}
+.row .btn-row{
+  background-color: #65C5E4;
+  color:#ecf0f1;
+  padding: 7px 12px;
+  margin-right: 0;
+}
+
+.row .btn-row:hover{
+  background-color: #004377;
+  color:#ecf0f1;
+}
