@@ -28,8 +28,10 @@ Rails.application.routes.draw do
   end
 
   namespace :api, defaults: {format: 'json'} do
-    resources :player_templates, only: [:index, :show]
-    resources :team_templates, only: [:index, :show]
-    resources :skill_templates, only: [:index, :show]
+    namespace :templates do
+      resources :player_templates, only: [:index, :show]
+      resources :team_templates, only: [:index, :show]
+      resources :skill_templates, only: [:index, :show]
+    end
   end
 end
