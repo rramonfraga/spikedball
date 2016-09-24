@@ -21,6 +21,10 @@ class Team < ApplicationRecord
   CHEERLEADERS = 10000
   APOTHECARIES = 50000
 
+  def team
+    team_template
+  end
+
   def calculate_points(championship)
     championship.matches.reduce(0) do |points, match|
       if match.winner_id == id

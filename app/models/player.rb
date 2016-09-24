@@ -13,6 +13,13 @@ class Player < ApplicationRecord
 
   CATEGORIES = { g: "General", p: "Passing", a: "Agility", s: "Strength", e: "Extraordinary", m: "Mutation" }
 
+  def player
+    player_template
+  end
+
+  def skills
+    skill_templates
+  end
   def add_points(points)
     self.experience += points
     new_level if new_level?
