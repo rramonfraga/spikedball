@@ -3,35 +3,31 @@ Rails.application.routes.draw do
   root 'welcome#index'
   get '/welcome', to: 'welcome#welcome'
 
-  devise_for :users, controllers: { confirmations: 'confirmations' }
+  devise_for :users
 
-  resources :communities, only: [:new, :create]
-
-  scope ':community_id' do
-    get '/' => 'communities#show'
-
+  resources :communities, path: '/c', only: [:show, :new, :create] do
     resources :admin, only: [:index]
 
     resources :championships, only: [:show, :new, :create] do
-      resources :matches, only: [:show] do
+      post 'start', to: 'championships#start'
+      post 'join', to: 'championships#join'
+
+      resources :matches, only: [:show, :edit, :update] do
+        post 'finish', to: 'matches#finish'
         resources :feats, only: [:new, :create, :destroy]
       end
     end
+  end
 
-    post 'championships/:id/start' => 'championships#start'
-    post 'championships/:id/join' => 'championships#join'
-    post 'championships/:championship_id/matches/:id/finish' => 'matches#finish'
-
-    resources :teams, only: [:index, :show, :new, :create] do
-      resources :players, only: [:create, :update, :destroy]
-    end
+  resources :teams, only: [:index, :show, :new, :create] do
+    resources :players, only: [:create, :update, :destroy]
   end
 
   namespace :api, defaults: {format: 'json'} do
-    namespace :templates do
-      resources :player_templates, only: [:index, :show]
-      resources :team_templates, only: [:index, :show]
-      resources :skill_templates, only: [:index, :show]
+    scope :templates do
+      resources :team_templates, path: '/teams', only: [:index, :show]
+      resources :player_templates, path: '/players', only: [:index, :show]
+      resources :skill_templates, path: '/skills', only: [:index, :show]
     end
   end
 end

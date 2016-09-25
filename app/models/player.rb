@@ -20,6 +20,7 @@ class Player < ApplicationRecord
   def skills
     skill_templates
   end
+  
   def add_points(points)
     self.experience += points
     new_level if new_level?
@@ -44,7 +45,6 @@ class Player < ApplicationRecord
 
   def new_level
     self.level = actual_level
-    self.dice_roll = Dice.two_six
     self.level_up = true
   end
 

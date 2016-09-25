@@ -35,7 +35,7 @@ class ChampionshipsController < ApplicationController
   end
 
   def start
-    championship = Championship.find_by(id: params[:id])
+    championship = Championship.find_by(id: params[:championship_id])
     championship.start! if !championship.start?
     redirect_to action: 'show', controller: 'championships', id: championship.id
   end

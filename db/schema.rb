@@ -39,6 +39,8 @@ ActiveRecord::Schema.define(version: 20160924082155) do
     t.string   "kind"
     t.string   "casuality"
     t.boolean  "host_team",  default: false
+    t.integer  "dice_roll"
+    t.boolean  "level_up",   default: false
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
     t.index ["match_id"], name: "index_feats_on_match_id", using: :btree
@@ -102,7 +104,6 @@ ActiveRecord::Schema.define(version: 20160924082155) do
     t.integer  "experience",         default: 0
     t.string   "level",              default: "Rookie"
     t.boolean  "level_up",           default: false
-    t.integer  "dice_roll"
     t.integer  "mvp"
     t.integer  "ma"
     t.integer  "st"

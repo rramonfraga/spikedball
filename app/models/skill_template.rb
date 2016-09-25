@@ -7,4 +7,8 @@ class SkillTemplate < ApplicationRecord
   def self.by_category(category)
     where('category = ?', category).all
   end
+
+  def players
+    player_templates
+  end
 end

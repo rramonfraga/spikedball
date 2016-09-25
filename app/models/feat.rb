@@ -4,6 +4,8 @@ class Feat < ApplicationRecord
 
   validates :kind, :player, :match, presence: true
 
+  before_create :assign_touchdown
+
   FEATS = %i(injury complentions touchdowns interceptions mpv).freeze
   POINTS = {"injury" => 2, "complentions" => 1, "touchdowns" => 3, "interceptions" => 2, "mpv" => 5}
   CASUALITIES = [

@@ -6,6 +6,8 @@ class CreateFeats < ActiveRecord::Migration[5.0]
       t.string :kind
       t.string :casuality
       t.boolean :host_team, default: false
+      t.integer :dice_roll
+      t.boolean :level_up, default: false
 
       t.timestamps
     end

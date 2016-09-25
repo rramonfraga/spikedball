@@ -21,35 +21,37 @@ function disabled_maximun_players() {
 
   var values = $.map(options ,function(option) {
 
-    var request = $.get('/api/templates/players/' + option.value);
+    if(option.value != ""){
+      var request = $.get('/api/templates/players/' + option.value);
 
-    request.fail(function () {
-      alert("Couldn’t find this player. Try later.")
-    });
-
-    request.done(function (player) {
-      var count = 0;
-      $('.js-player-selector').each( function () {
-        if( this.value == option.value) { count++; }
+      request.fail(function () {
+        alert("Couldn’t find this player. Try later.")
       });
 
-      var klass = option.value;
+      request.done(function (player) {
+        var count = 0;
+        $('.js-player-selector').each( function () {
+          if( this.value == option.value) { count++; }
+        });
 
-      if(count == player.quantity){
-        $('.js-player-selector').each( function () {
-          var self = this
-          if( self.value != option.value){
-            self.getElementsByClassName(klass)[0].setAttribute('disabled', true);
-          }else{
-            self.getElementsByClassName(klass)[0].removeAttribute('disabled', false);
-          }
-        });
-      }else{
-        $('.js-player-selector').each( function () {
-          this.getElementsByClassName(klass)[0].removeAttribute('disabled', false);
-        });
-      };
-    });
+        var klass = option.value;
+
+        if(count == player.quantity){
+          $('.js-player-selector').each( function () {
+            var self = this
+            if( self.value != option.value){
+              self.getElementsByClassName(klass)[0].setAttribute('disabled', true);
+            }else{
+              self.getElementsByClassName(klass)[0].removeAttribute('disabled', false);
+            }
+          });
+        }else{
+          $('.js-player-selector').each( function () {
+            this.getElementsByClassName(klass)[0].removeAttribute('disabled', false);
+          });
+        };
+      });
+    };
   });
 }
 

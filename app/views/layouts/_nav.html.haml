@@ -7,7 +7,7 @@
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
-      %a.navbar-brand{ href: '#'}
+      %a.navbar-brand{ href: "/"}
         = image_tag asset_path('logo-spiked-ball.png'), height: 55
 
     #navbar.navbar-collapse.collapse{ role: 'navigation'}
@@ -21,7 +21,7 @@
             %ul.dropdown-menu
               - current_user.communities.each do |community|
                 %li
-                  %a{ href: "/#{community.id}" }
+                  %a{ href: community_path(id: community.id) }
                     = community.name
               %li
                 %a{ href: new_community_path }
@@ -35,7 +35,7 @@
             %ul.dropdown-menu
               - current_user.championships.each do |championship|
                 %li
-                  %a{ href: "/#{current_community.id}/championships/#{championship.id}" }
+                  %a{ href: community_championship_path(id: championship.id, community_id: current_community.id) }
                     = championship.name
 
           %li.dropdown.nav-teams-select
@@ -46,15 +46,15 @@
               - current_user.teams.each do |team|
                 - if team.id.present?
                   %li
-                    %a{ href: team_path(id: team.id, community_id: current_community.id)}
+                    %a{ href: team_path(id: team.id)}
                       = team.name
               %li
-                %a{ href: new_team_path(community_id: current_community.id) }
+                %a{ href: new_team_path }
                   + New Team
 
           -if current_user.admin?(current_community)
             %li
-              %a{ href: admin_index_path(community_id: current_community.id) }
+              %a{ href: community_admin_index_path(community_id: current_community.id) }
                 Admin
 
           %li#account-toggle.dropdown-toggle

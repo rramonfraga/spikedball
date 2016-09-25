@@ -5,4 +5,8 @@ class PlayerTemplate < ApplicationRecord
   has_many :skill_templates, through: :player_skill_templates
 
   validates :quantity, :title, :cost, :ma, :st, :ag, :av, :normal, :double, presence: true
+
+  def skills
+    skill_templates
+  end
 end

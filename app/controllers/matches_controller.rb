@@ -10,6 +10,27 @@ class MatchesController < ApplicationController
     end
   end
 
+  def edit
+    if @match = Match.find_by(id: params[:id])
+      @host_team = @match.host_team
+      @visit_team = @match.visit_team
+    else
+      render status: 404, file: '/public/404.html'
+    end
+  end
+
+  def update
+    if @match = Match.find_by(id: params[:id])
+      if @match.update_attributes(attributes)
+        render :show
+      else
+        render :edit, status: :bad_request
+      end
+    else
+      render status: 404, file: '/public/404.html'
+    end
+  end
+
   def finish
     match = Match.find_by(id: params[:id])
     match.finish!
