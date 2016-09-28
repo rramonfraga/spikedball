@@ -5,4 +5,6 @@ class Community < ApplicationRecord
 
   validates :name, uniqueness: true
 
+  alias code id
+
 end

@@ -2,7 +2,7 @@
   %h1
     Create a new Team
     .form
-      = form_for @team, community_id: current_community.id do |f|
+      = form_for @team, community_code: current_community.code do |f|
         - if @team.errors.any?
           %h2
             - pluralize(@team.errors.count, 'error')

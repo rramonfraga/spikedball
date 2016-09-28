@@ -19,8 +19,8 @@ class ApplicationController < ActionController::Base
 
   def current_community
     @_current_community ||= begin
-      Community.find_by(id: params[:community_id]) ||
-        Community.find_by(id: params[:id]) ||
+      Community.find_by(id: params[:community_code]) ||
+        Community.find_by(id: params[:code]) ||
         current_user.communities.first ||
         Community.find_by(name: 'Communities')
     end

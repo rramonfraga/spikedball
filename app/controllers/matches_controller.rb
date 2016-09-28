@@ -34,6 +34,6 @@ class MatchesController < ApplicationController
   def finish
     match = Match.find_by(id: params[:id])
     match.finish!
-    redirect_to action: 'show', controller: 'championships', community_id: params["community_id"], id: params["championship_id"]
+    redirect_to action: 'show', controller: 'championships', community_code: params["community_code"], id: params["championship_id"]
   end
 end

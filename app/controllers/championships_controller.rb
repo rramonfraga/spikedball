@@ -2,14 +2,14 @@ class ChampionshipsController < ApplicationController
   before_action :authenticate_user!
 
   def new
-    @community = Community.find_by(id: current_community.id)
+    @community = Community.find_by(id: current_community.code)
     @championship = @community.championships.new
   end
 
   def create
     @championship = Championship.new championship_params
     if @championship.save
-      render action: 'show', controller: 'communities', community_id: current_community.id
+      render action: 'show', controller: 'communities', community_code: current_community.code
     else
       render(:new)
     end
@@ -28,7 +28,7 @@ class ChampionshipsController < ApplicationController
     team = Team.find_by(id: params[:championship][:team_ids])
     if championship.present? && team.present?
       championship.join!(team)
-      redirect_to action: 'show', controller: 'communities', community_id: current_community.id
+      redirect_to action: 'show', controller: 'communities', community_code: current_community.code
     else
       render status: 404, file: '/public/404.html'
     end
@@ -43,7 +43,7 @@ class ChampionshipsController < ApplicationController
   private
   def championship_params
     base_params = params.require(:championship).permit(:name, :kind, :init_treasury)
-    base_params.merge!(community_id: current_community.id)
+    base_params.merge!(community_code: current_community.code)
   end
 
 end

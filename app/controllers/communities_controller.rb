@@ -2,7 +2,7 @@ class CommunitiesController < ApplicationController
   before_action :authenticate_user!
 
   def show
-    if @community = Community.find_by(id: params[:id])
+    if @community = Community.find_by(id: params[:code])
       @championships = @community.championships
     else
       render status: 404, file: '/public/404.html'
@@ -19,7 +19,7 @@ class CommunitiesController < ApplicationController
       render(:new)
     else
       current_user.communities << @community
-      redirect_to action: 'index', controller: 'welcome', community_id: @community.id
+      redirect_to action: 'index', controller: 'welcome', community_code: @community.code
     end
   end
 

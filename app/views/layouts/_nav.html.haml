@@ -21,7 +21,7 @@
             %ul.dropdown-menu
               - current_user.communities.each do |community|
                 %li
-                  %a{ href: community_path(id: community.id) }
+                  %a{ href: community_path(code: community.code) }
                     = community.name
               %li
                 %a{ href: new_community_path }
@@ -35,7 +35,7 @@
             %ul.dropdown-menu
               - current_user.championships.each do |championship|
                 %li
-                  %a{ href: community_championship_path(id: championship.id, community_id: current_community.id) }
+                  %a{ href: community_championship_path(id: championship.id, community_code: current_community.code) }
                     = championship.name
 
           %li.dropdown.nav-teams-select
@@ -54,7 +54,7 @@
 
           -if current_user.admin?(current_community)
             %li
-              %a{ href: community_admin_index_path(community_id: current_community.id) }
+              %a{ href: community_admin_index_path(community_code: current_community.code) }
                 Admin
 
           %li#account-toggle.dropdown-toggle

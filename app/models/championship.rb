@@ -37,4 +37,8 @@ class Championship < ApplicationRecord
     create_seasons
     save!
   end
+
+  def community_code
+    community_id
+  end
 end

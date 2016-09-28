@@ -5,15 +5,17 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :communities, path: '/c', only: [:show, :new, :create] do
+  resources :communities, path: '/c', param: :code, only: [:show, :new, :create] do
     resources :admin, only: [:index]
 
     resources :championships, only: [:show, :new, :create] do
-      post 'start', to: 'championships#start'
-      post 'join', to: 'championships#join'
+      member do
+        post 'start'
+        post 'join'
+      end
 
       resources :matches, only: [:show, :edit, :update] do
-        post 'finish', to: 'matches#finish'
+        post 'finish', on: :member
         resources :feats, only: [:new, :create, :destroy]
       end
     end

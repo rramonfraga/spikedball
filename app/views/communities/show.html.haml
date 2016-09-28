@@ -4,7 +4,7 @@
       %h1.col-md-8
         = @community.name
     .col-md-4
-      %a.btn.btn-lg.btn-primary.btn-block.btn-create-championship{ href: new_community_championship_path(community_id: current_community.id) }
+      %a.btn.btn-lg.btn-primary.btn-block.btn-create-championship{ href: new_community_championship_path(community_code: current_community.code) }
         Create a Championship
   .row
     .col-md-12
@@ -15,12 +15,12 @@
         %ul.list-unstyled
           %li{ data: { championship: championship.id } }
             %h2
-              %a{ href: community_championship_path(id: championship.id, community_id: current_community.id) }
+              %a{ href: community_championship_path(id: championship.id, community_code: current_community.code) }
                 = championship.name  + " " + championship.kind
       .col-md-4
         - if current_user.free_teams.present?
           .form-group
-            = form_for(championship, as: championship, url: "c/#{@community.id}/championships/#{championship.id}/join", html: { method: :post, class: 'form-signin' }) do |f|
+            = form_for(championship, as: championship, url: "c/#{@community.code}/championships/#{championship.id}/join", html: { method: :post, class: 'form-signin' }) do |f|
               .row
                 .field.col-md-8
                   = f.label :team_ids, class: 'sr-only'
@@ -35,5 +35,5 @@
         - @championships.each do |championship|
           %li{ data: { championship: championship.id } }
             %h2
-              %a{ href: community_championship_path(id: championship.id, community_id: current_community.id) }
+              %a{ href: community_championship_path(id: championship.id, community_code: current_community.code) }
                 = championship.name  + " " + championship.kind
