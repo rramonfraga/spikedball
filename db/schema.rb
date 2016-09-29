@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20160924082155) do
 
   create_table "communities", force: :cascade do |t|
     t.string   "name"
+    t.string   "code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -51,11 +52,15 @@ ActiveRecord::Schema.define(version: 20160924082155) do
     t.integer  "season_id"
     t.integer  "host_team_id"
     t.integer  "visit_team_id"
-    t.boolean  "finish",        default: false
-    t.integer  "host_result",   default: 0
-    t.integer  "visit_result",  default: 0
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.integer  "host_team_treasury"
+    t.integer  "visit_team_treasury"
+    t.integer  "host_team_fan_factor"
+    t.integer  "visit_team_fan_factor"
+    t.boolean  "finish",                default: false
+    t.integer  "host_result",           default: 0
+    t.integer  "visit_result",          default: 0
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
     t.index ["season_id"], name: "index_matches_on_season_id", using: :btree
   end
 

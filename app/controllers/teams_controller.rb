@@ -30,14 +30,13 @@ class TeamsController < ApplicationController
   private
   def team_params
     params.require(:team).permit( :name,
-                                  :team_id,
+                                  :team_template_id,
                                   :treasury,
                                   :re_rolls,
                                   :fan_factor,
                                   :assistant_coaches,
                                   :cheerleaders,
                                   :apothecaries,
-                                  :halfling_chef,
-                                  players_attributes: [:dorsal, :name, :player_id])
+                                  players_attributes: [:dorsal, :name, :player_template_id])
   end
 end

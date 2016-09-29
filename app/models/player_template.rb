@@ -9,4 +9,8 @@ class PlayerTemplate < ApplicationRecord
   def skills
     skill_templates
   end
+
+  def team_name
+    team_template.name
+  end
 end

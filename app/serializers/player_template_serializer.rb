@@ -11,7 +11,7 @@ class PlayerTemplateSerializer < ActiveModel::Serializer
               :double,
               :feeder
 
-  attribute :team_template_id, key: :team_id
+  attribute :team_name, key: :team
 
   has_many :skill_templates, through: :player_skill_templates, key: :skills
 end

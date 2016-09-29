@@ -10,7 +10,7 @@ def create_team_templates
   team_file = IO.read('lib/assets/team.json')
   teams = JSON.parse(team_file)
   teams.each do |team|
-    TeamTemplate.create name: team["name"], re_roll: team["reroll_value"], description: team["description"],
+    TeamTemplate.create name: team["name"], re_roll: team["re_roll"], description: team["description"],
                     stakes: team["stakes"], revive: team["revive"], apothecary: team["apothecary"]
   end
 end
@@ -36,8 +36,9 @@ def create_player_templates
 end
 
 def create_communities
-  Community.create(name: 'Communities')
-  Community.create(name: 'Generación X')
+  Community.create(name: 'Communities', code: 'communities')
+  Community.create(name: 'Generación X', code: 'generacion-x')
+  Community.create(name: 'Brick Bowl', code: 'brick-bowl')
 end
 
 def create_championships
@@ -70,8 +71,9 @@ def create_users
   users << community.users.create(name: 'Marilena', email: 'mmrromerodeavila@gmail.com', password: 'SpikedBall')
   users << community.users.create(name: 'Jamao', email: 'angel.brunodiaz@gmail.com', password: 'SpikedBall')
   users << community.users.create(name: 'Adamsemeth', email: 'adamsemeth@gmail.com', password: 'SpikedBall')
+  users << community.users.create(name: 'Nacho', email: 'nolmedilla@gmail.com', password: 'SpikedBall')
+  users << community.users.create(name: 'Kraven', email: 'kraven_88@msn.com', password: 'SpikedBall')
   #users << community.users.create(name: 'Bri', email: 'bri@spikedball.com', password: 'SpikedBall')
-  users.each { |user| create_team_and_players(user) }
 end
 
 

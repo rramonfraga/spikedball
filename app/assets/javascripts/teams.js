@@ -70,8 +70,8 @@ $(document).on('change', '.js-team-selector', function (event) {
     $('.js-player-selector').empty();
     $('.js-player-attributes').find('.field').empty();
     $('.js-cost').attr('data-cost', 0);
-    $('.js-rerolls').attr('data-base', team.reroll_value);
-    $('.js-rerolls').attr('data-cost', team.reroll_value*$('.js-rerolls').val())
+    $('.js-rerolls').attr('data-base', team.re_roll);
+    $('.js-rerolls').attr('data-cost', team.re_roll*$('.js-rerolls').val())
     $('.js-player-selector').append( $('<option></option>'));
     team.players.forEach( function (player) {
       $('.js-player-selector').append($('<option value='+ player.id +' class='+ player.id + '>'+ player.title +'</option>'));
@@ -130,6 +130,7 @@ $(document).on('change', '.js-extra-selector', function (event) {
 
 
 $(document).on('click', '.js-skill', function (event){
+  event.preventDefault();
   var $select = $(event.currentTarget);
   var skillId = $select.data("skill-id");
   var request = $.get('/api/templates/skills/' + skillId);

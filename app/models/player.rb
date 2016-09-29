@@ -20,7 +20,7 @@ class Player < ApplicationRecord
   def skills
     skill_templates
   end
-  
+
   def add_points(points)
     self.experience += points
     new_level if new_level?
