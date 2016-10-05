@@ -21,7 +21,7 @@
       .col-md-4
         - if current_user.free_teams.present?
           .form-group
-            = form_for(championship, as: championship, url: "#{@community.code}/championships/#{championship.id}/join", html: { method: :post, class: 'form-signin' }) do |f|
+            = form_for(championship, as: championship, url: join_community_championship_path(community_code: current_community.id, id: championship.id), html: { method: :post, class: 'form-signin' } ) do |f|
               .row
                 .field.col-md-8
                   = f.label :team_ids, class: 'sr-only'

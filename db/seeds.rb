@@ -48,9 +48,8 @@ end
 
 def create_team_and_players(user)
   random = Random.new
-  random = random.rand(24)
-  team = user.teams.create name: "Team #{user.name}", team_template_id: random, re_rolls: 2,
-                          fan_factor: 0, assistant_coaches: 0, cheerleaders: 0, apothecaries: 0
+  random = random.rand(24) + 1
+  team = user.teams.create name: "Team #{user.name}", team_template_id: random, re_rolls: 2, fan_factor: 0, assistant_coaches: 0, cheerleaders: 0, apothecaries: 0
   11.times do |index|
     number = team.team_template.player_templates.first.id
     team.players.create name: "Player #{index + 1}", dorsal: "#{index + 1}", player_template_id: number
@@ -74,6 +73,7 @@ def create_users
   users << community.users.create(name: 'Nacho', email: 'nolmedilla@gmail.com', password: 'SpikedBall')
   users << community.users.create(name: 'Kraven', email: 'kraven_88@msn.com', password: 'SpikedBall')
   #users << community.users.create(name: 'Bri', email: 'bri@spikedball.com', password: 'SpikedBall')
+  users.each { |user| create_team_and_players(user) }
 end
 
 
