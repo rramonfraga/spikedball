@@ -1,0 +1,21 @@
+.row
+  = render 'players/grid_stats'
+  - team.players.each_with_index do |player, index|
+    = render 'players/player', player: player, index: index + 1
+
+%section.assistant
+  .reroll
+    Re-Rolls:
+    = team.re_rolls
+  .fan-factor
+    Fan Factor:
+    = team.fan_factor
+  .assistant_coaches
+    Assistant Coaches:
+    = team.assistant_coaches
+  .cheerleaders
+    Cheerleaders:
+    = team.cheerleaders
+  .Apothecaries
+    Apothecaries:
+    = team.apothecaries
