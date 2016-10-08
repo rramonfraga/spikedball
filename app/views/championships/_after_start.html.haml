@@ -15,8 +15,10 @@
                     = match.title_result
                 - else
                   - if match.can_validate?(current_user)
-                    %a.match.btn.btn-blood{ href: new_community_championship_match_feat_path(championship_id: params[:id], match_id: match.id, community_code: current_community.code) }
+                    %a.match{ href: community_championship_match_path(id: match.id, championship_id: @championship.id, community_code: current_community.code) }
                       = match.title
+                    %a.match.btn.btn-blood{ href: new_community_championship_match_feat_path(championship_id: @championship.id, match_id: match.id, community_code: current_community.code) }
+                      Validate
                   - else
                     %a.match{ href: community_championship_match_path(id: match.id, championship_id: @championship.id, community_code: current_community.code) }
                       = match.title
