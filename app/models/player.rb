@@ -39,6 +39,29 @@ class Player < ApplicationRecord
     end
   end
 
+  def miss_next_game!
+    self.miss_next_game = true
+    save!
+  end
+
+  def add_niggling_injury
+    self.niggling_injury += 1
+    miss_next_game!
+  end
+
+  def remove(attribute)
+    case attribute
+    when 'ma' then self.ma -= 1 unless ma == 1
+    when 'av' then self.av -= 1 unless av == 1
+    when 'ag' then self.ag -= 1 unless ag == 1
+    when 'st' then self.st -= 1 unless st == 1
+    end
+    miss_next_game!
+  end
+
+  def dead!
+  end
+
   def new_level?
     level != actual_level
   end

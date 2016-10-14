@@ -17,9 +17,9 @@
     = f.label :kind
     = f.select(:kind, options_for_select(Feat::FEATS), { include_blank: true }, class: 'form-control js-kind-selector' )
 
-  .form-group.js-casuality
-    = f.label :casuality
-    = f.select(:casuality, options_for_select(Feat::CASUALITIES), { include_blank: true }, class: 'form-control js-casuality-selector', disabled: true )
+  .form-group.js-injury
+    = f.label :injury
+    = f.select(:injury, options_for_select(Feat::INJURIES), { include_blank: true }, class: 'form-control js-injury-selector', disabled: true )
 
   .actions
     = f.submit 'Validate', class: 'btn btn-lg btn-blood'

@@ -4,11 +4,12 @@ class Feat < ApplicationRecord
 
   validates :kind, :player, :match, presence: true
 
-  before_create :assign_touchdown
+  after_create :assign_touchdown
+  after_create :assign_injury
 
-  FEATS = %i(injury complentions touchdowns interceptions mpv).freeze
-  POINTS = {"injury" => 2, "complentions" => 1, "touchdowns" => 3, "interceptions" => 2, "mpv" => 5}
-  CASUALITIES = [
+  FEATS = %i(casualty injury complention touchdown interception mpv).freeze
+  POINTS = {casualty: 2, complention: 1, touchdown: 3, interception: 2, mpv: 5}
+  INJURIES = [
     '11-38 Badly Hurt (No long term effect)',
     '41 Broken Ribs (Miss next game)',
     '42 Groin Strain (Miss next game)',
@@ -29,15 +30,52 @@ class Feat < ApplicationRecord
     '61-68 DEAD (Dead!)'
   ]
 
+  INJURIES_VALUE = {
+    '11-38 Badly Hurt (No long term effect)' => :no_effect,
+    '41 Broken Ribs (Miss next game)' => :miss_next_game,
+    '42 Groin Strain (Miss next game)' => :miss_next_game,
+    '43 Gouged Eye (Miss next game)' => :miss_next_game,
+    '44 Broken Jaw (Miss next game)' => :miss_next_game,
+    '45 Fractured Arm (Miss next game)' => :miss_next_game,
+    '46 Fractured Leg (Miss next game)' => :miss_next_game,
+    '47 Smashed Hand (Miss next game)' => :miss_next_game,
+    '48 Pinched Nerve (Miss next game)' => :miss_next_game,
+    '51 Damaged Back (Niggling Injury)' => :niggling_injury,
+    '52 Smashed Knee (Niggling Injury)' => :niggling_injury,
+    '53 Smashed Hip (-1 MA)' => :ma_injury,
+    '54 Smashed Ankle (-1 MA)' => :ma_injury,
+    '55 Serious Concussion (-1 AV)' => :av_injury,
+    '56 Fractured Skull (-1 AV)' => :av_injury,
+    '57 Broken Neck (-1 AG)' => :ag_injury,
+    '58 Smashed Collar Bone (-1 ST)' => :st_injury,
+    '61-68 DEAD (Dead!)' => :dead,
+  }
+
   def assign_touchdown(number = 1)
-    if touchdown?
-      host_team? ? match.host_result += number : match.visit_result += number
-      match.save!
+    return unless touchdown?
+    host_team? ? match.host_result += number : match.visit_result += number
+    match.save!
+  end
+
+  def assign_injury
+    return unless injury?
+    case INJURIES_VALUE[injury]
+    when :miss_next_game then player.miss_next_game!
+    when :niggling_injury then player.add_niggling_injury
+    when :ma_injury then player.remove('ma')
+    when :av_injury then player.remove('av')
+    when :ag_injury then player.remove('ag')
+    when :st_injury then player.remove('st')
+    when :dead then player.dead!
     end
   end
 
   def touchdown?
-    kind == "touchdowns"
+    kind.include? 'touchdown'
+  end
+
+  def injury?
+    kind.include? 'injury'
   end
 
   def host_team?

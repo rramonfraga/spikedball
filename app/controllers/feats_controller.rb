@@ -10,8 +10,11 @@ class FeatsController < ApplicationController
   def create
     @match = Match.find_by(id: params[:match_id])
     @feat = @match.feats.new feat_params
-    @feat.save
-    redirect_to action: 'new', controller: 'feats', community_code: current_community.code, championship_id: params["championship_id"], match_id: params["match_id"]
+    if @feat.save
+      redirect_to action: 'new', controller: 'feats', community_code: current_community.code, championship_id: params["championship_id"], match_id: params["match_id"]
+    else
+      render(:new)
+    end
   end
 
   def destroy
@@ -23,6 +26,6 @@ class FeatsController < ApplicationController
 
   private
   def feat_params
-    params.require(:feat).permit(:player_id, :kind, :casuality)
+    params.require(:feat).permit(:player_id, :kind, :injury)
   end
 end

@@ -21,7 +21,7 @@
         .col-sm-3
           Kind
         .col-sm-2
-          Casuality
+          Injury
         .col-sm-1
 
     - @match.feats.each do | feat |
@@ -34,7 +34,7 @@
           .col-sm-3
             = feat.kind
           .col-sm-2
-            = feat.casuality
+            = feat.injury
           .col-sm-1
             = button_to 'Delete', { action: 'destroy', id: feat.id }, method: :delete, class: 'btn-row'
 

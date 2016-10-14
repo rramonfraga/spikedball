@@ -8,10 +8,10 @@
     var feat = $select.val();
 
     if( feat == 'injury' ){
-      $('.js-casuality-selector').prop('disabled', false);
+      $('.js-injury-selector').prop('disabled', false);
     }else{
-      $('.js-casuality-selector').value = "";
-      $('.js-casuality-selector').prop('disabled', true);
+      $('.js-injury-selector').value = "";
+      $('.js-injury-selector').prop('disabled', true);
     };
 
   });
