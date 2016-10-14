@@ -74,6 +74,7 @@ class Player < ApplicationRecord
   end
 
   def dead!
+    destroy
   end
 
   def new_level?
