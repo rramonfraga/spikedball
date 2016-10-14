@@ -49,6 +49,15 @@ class Player < ApplicationRecord
     save!
   end
 
+  def miss_next_game?
+    miss_next_game
+  end
+
+  def clean_miss_next_game!
+    self.miss_next_game = false
+    save!
+  end
+
   def add_niggling_injury
     self.niggling_injury += 1
     miss_next_game!

@@ -10,6 +10,7 @@ class Match < ApplicationRecord
 
   def finish!
     self.finish = true
+    clean_injured_players!
     assign_things_from_feats!
     assign_treassury!
     save!
@@ -54,6 +55,11 @@ class Match < ApplicationRecord
   def assign_treassury!
     host_team.add_treasury(host_team_treasury)
     visit_team.add_treasury(visit_team_treasury)
+  end
+
+  def clean_injured_players!
+    host_team.players.each { |player| player.clean_miss_next_game! }
+    visit_team.players.each { |player| player.clean_miss_next_game! }
   end
 
   def title
