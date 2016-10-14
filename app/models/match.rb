@@ -15,16 +15,21 @@ class Match < ApplicationRecord
     save!
   end
 
-  def winner_id
-    return_winner_result if finish?
+  def winner?(team)
+    winner == team if finish?
   end
 
-  def return_winner_result
+  def draw?(team)
+    return unless team == host_team || team == visit_team
+    winner == DRAW if finish?
+  end
+
+  def winner
     if host_result < visit_result
-      visit_team_id
+      visit_team
     elsif host_result > visit_result
-      host_team_id
-    else
+      host_team
+    else host_result == visit_result
       DRAW
     end
   end

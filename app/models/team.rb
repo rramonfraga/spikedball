@@ -27,9 +27,9 @@ class Team < ApplicationRecord
 
   def calculate_points(championship)
     championship.matches.reduce(0) do |points, match|
-      if match.winner_id == id
+      if match.winner?(self)
         points += 3
-      elsif match.winner_id == 0
+      elsif match.draw?(self)
         points += 1
       else
         points += 0
