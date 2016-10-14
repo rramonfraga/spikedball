@@ -1,0 +1,34 @@
+.row.row-main.row-main-create.js-player
+  .col-sm-5
+    .row
+      %strike.field.col-sm-1.number
+        = index
+      %strike.field.col-sm-2
+        = player.dorsal
+      %strike.field.col-sm-4.name
+        = image_tag asset_path('injury.jpg'), width: 20
+        = player.name
+      %strike.field.col-sm-5.player
+        = player.title
+  .col-sm-7
+    .row
+      %strike.field.col-sm-1.ma
+        = player.ma
+      %strike.field.col-sm-1.st
+        = player.st
+      %strike.field.col-sm-1.ag
+        = player.ag
+      %strike.field.col-sm-1.av
+        = player.av
+      %strike.field.col-sm-2.cost
+        = player.cost
+      %strike.field.col-sm-4.skill
+        - player.skill_templates.each do |skill|
+          %a.js-skill{ data: { skill: { id: skill.id }}}
+            = skill.name
+          ,
+      %strike.field.col-sm-2.experience
+        = player.experience
+        - if player.level_up?
+          %a#level-up{ href: '/'}
+            = image_tag asset_path('level_up.png')

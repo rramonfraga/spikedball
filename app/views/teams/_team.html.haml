@@ -1,7 +1,10 @@
 .row
   = render 'players/grid_stats'
   - team.players.each_with_index do |player, index|
-    = render 'players/player', player: player, index: index + 1
+    - if player.miss_next_game?
+      = render 'players/injured_player', player: player, index: index + 1
+    - else
+      = render 'players/player', player: player, index: index + 1
 
 %section.assistant
   .reroll
