@@ -27,6 +27,10 @@ class Player < ApplicationRecord
     save
   end
 
+  def full_name
+    "#{dorsal} - #{name}"
+  end
+
   def actual_level
     case experience
     when 0..5 then "Rookie"

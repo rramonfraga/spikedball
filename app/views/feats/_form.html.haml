@@ -11,7 +11,7 @@
 
   .form-group
     = f.label :player_id, 'Player'
-    = f.collection_select(:player_id, @players, :id, :name, {},{class: 'form-control'} )
+    = f.collection_select(:player_id, @players, :id, :full_name, {},{class: 'form-control'} )
 
   .form-group.js-kind
     = f.label :kind
