@@ -56,21 +56,23 @@ class Team < ApplicationRecord
     save
   end
 
-  private
   def set_value!
-    calculate_value
+    calculate_value!
+  end
+
+  private
+  def calculate_value!
+    self.value = value_of_players + value_of_assistans
     save!
   end
 
-  def calculate_value
-    self.value = players_value + assistans_value
+  def value_of_players
+    players.reduce(0) do |val, p|
+      p.miss_next_game? ? val : val + p.cost
+    end
   end
 
-  def players_value
-    players.reduce(0){ |val, p| val + p.cost }
-  end
-
-  def assistans_value
+  def value_of_assistans
     re_rolls * team_template.re_roll +
       fan_factor * FAN_FACTOR +
       assistant_coaches * ASSISTANT_COACHES +

@@ -13,6 +13,7 @@ class Match < ApplicationRecord
     clean_injured_players!
     assign_things_from_feats!
     assign_treassury!
+    recalculate_value!
     save!
   end
 
@@ -55,6 +56,11 @@ class Match < ApplicationRecord
   def assign_treassury!
     host_team.add_treasury(host_team_treasury)
     visit_team.add_treasury(visit_team_treasury)
+  end
+
+  def recalculate_value!
+    host_team.set_value!
+    visit_team.set_value!
   end
 
   def clean_injured_players!
