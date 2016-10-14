@@ -19,7 +19,6 @@ class FeatsController < ApplicationController
 
   def destroy
     @feat = Feat.find_by(id: params[:id])
-    @feat.assign_touchdown(-1)
     @feat.destroy
     redirect_to action: 'new', controller: 'feats', community_code: current_community.code, championship_id: params["championship_id"], match_id: params["match_id"]
   end

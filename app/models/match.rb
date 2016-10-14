@@ -3,14 +3,15 @@ class Match < ApplicationRecord
   belongs_to :visit_team, class_name: 'Team', foreign_key: 'visit_team_id'
   belongs_to :host_team, class_name: 'Team', foreign_key: 'host_team_id'
 
-  has_one :championship, through: :seasons
+  has_one :championship, through: :season
   has_many :feats
 
   DRAW = 0
 
   def finish!
     self.finish = true
-    assign_experience_from_feats
+    assign_things_from_feats!
+    assign_treassury!
     save!
   end
 
@@ -38,10 +39,16 @@ class Match < ApplicationRecord
     end
   end
 
-  def assign_experience_from_feats
+  def assign_things_from_feats!
     feats.each do |feat|
-      feat.assign_experience
+      feat.assign_experience!
+      feat.assign_injury!
     end
+  end
+
+  def assign_treassury!
+    host_team.add_treasury(host_team_treasury)
+    visit_team.add_treasury(visit_team_treasury)
   end
 
   def title
@@ -53,7 +60,8 @@ class Match < ApplicationRecord
   end
 
   def can_validate?(user)
-    user.id == host_team.user_id || user.id == visit_team.user_id
+    user.owner_team?(host_team)||
+      user.owner_team?(visit_team) ||
+      user.admin?(championship.community)
   end
-
 end

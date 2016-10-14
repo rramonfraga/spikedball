@@ -1,0 +1,22 @@
+- url = finish_community_championship_match_path(community_code: current_community.code, championship_id: params['championship_id'], id: params['match_id'])
+= form_for match, url: url do |f|
+  - if match.errors.any?
+    %h2
+      = pluralize(match.errors.count, 'error')
+      prohibited this team from being saved:
+
+    %ul
+      - match.errors.full_messages.each do |message|
+        %li
+          = message
+
+  .form-group
+    = f.label :host_team_treasury, 'Host Team Treasury'
+    = f.text_field :host_team_treasury, class: 'form-control'
+
+  .form-group
+    = f.label :visit_team_treasury, 'Visit Team Treasury'
+    = f.text_field :visit_team_treasury, class: 'form-control'
+
+  .actions
+    = f.submit 'Finish Match!', class: 'btn btn-lg btn-blood'

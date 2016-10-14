@@ -22,13 +22,14 @@ class Player < ApplicationRecord
   end
 
   def add_points(points)
-    self.experience += points
+    self.experience += points.to_i
     new_level if new_level?
     save
   end
 
   def actual_level
     case experience
+    when 0..5 then "Rookie"
     when 6..15 then "Experienced"
     when 16..30 then "Veteran"
     when 31..50 then "Emerging Star"

@@ -5,7 +5,7 @@ class Feat < ApplicationRecord
   validates :kind, :player, :match, presence: true
 
   after_create :assign_touchdown
-  after_create :assign_injury
+  before_destroy :dissociate_touchdown
 
   FEATS = %i(casualty injury complention touchdown interception mpv).freeze
   POINTS = {casualty: 2, complention: 1, touchdown: 3, interception: 2, mpv: 5}
@@ -57,7 +57,11 @@ class Feat < ApplicationRecord
     match.save!
   end
 
-  def assign_injury
+  def dissociate_touchdown(number = -1)
+    assign_touchdown(number)
+  end
+
+  def assign_injury!
     return unless injury?
     case INJURIES_VALUE[injury]
     when :miss_next_game then player.miss_next_game!
@@ -82,7 +86,7 @@ class Feat < ApplicationRecord
     player.team_id == match.host_team_id
   end
 
-  def assign_experience
-    player.add_points(POINTS[kind])
+  def assign_experience!
+    player.add_points(POINTS[kind.to_sym])
   end
 end

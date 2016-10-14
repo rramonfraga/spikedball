@@ -20,4 +20,8 @@ class User < ApplicationRecord
   def admin?(community)
     user_communities.find { |p| p.community == community }.admin? if user_communities.present?
   end
+
+  def owner_team?(team)
+    id == team.user_id
+  end
 end

@@ -38,4 +38,6 @@
           .col-sm-1
             = button_to 'Delete', { action: 'destroy', id: feat.id }, method: :delete, class: 'btn-row'
 
-  = render 'form'
+  = render 'form', feat: @feat
+
+  = render 'matches/finish', match: @match

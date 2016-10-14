@@ -51,6 +51,11 @@ class Team < ApplicationRecord
     championships.find{ |championship| !championship.finish? }
   end
 
+  def add_treasury(treasury)
+    self.treasury += treasury
+    save
+  end
+
   private
   def set_value!
     calculate_value

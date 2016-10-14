@@ -15,7 +15,7 @@ Rails.application.routes.draw do
       end
 
       resources :matches, only: [:show, :edit, :update] do
-        post 'finish', on: :member
+        patch 'finish', on: :member
         resources :feats, only: [:new, :create, :destroy]
       end
     end
