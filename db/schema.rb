@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161008124632) do
+ActiveRecord::Schema.define(version: 20161014083157) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,12 +38,12 @@ ActiveRecord::Schema.define(version: 20161008124632) do
     t.integer  "match_id"
     t.integer  "player_id"
     t.string   "kind"
-    t.string   "casuality"
     t.boolean  "host_team",  default: false
     t.integer  "dice_roll"
     t.boolean  "level_up",   default: false
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+    t.string   "injury"
     t.index ["match_id"], name: "index_feats_on_match_id", using: :btree
     t.index ["player_id"], name: "index_feats_on_player_id", using: :btree
   end
