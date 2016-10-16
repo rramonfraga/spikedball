@@ -1,26 +1,46 @@
 - if feats.present?
   .row.row-header
-    .col-sm-3
-      Team
-    .col-sm-3
-      Player
-    .col-sm-2
-      Kind
-    .col-sm-2
-      Injury
-    .col-sm-2
+    - if match.finish?
+      .col-sm-3
+        Team
+      .col-sm-3
+        Player
+      .col-sm-2
+        Kind
+      .col-sm-4
+        Injury
+    - else
+      .col-sm-2
+        Team
+      .col-sm-2
+        Player
+      .col-sm-2
+        Kind
+      .col-sm-4
+        Injury
+      .col-sm-2
+        Delete
 
 - feats.each do | feat |
   - if feat.player != nil
     .row.row-main
-      .col-sm-3
-        = feat.player.team.name
-      .col-sm-3
-        = feat.player.name
-      .col-sm-3
-        = feat.kind
-      .col-sm-2
-        = feat.injury
-      - unless match.finish?
+      - if match.finish?
+        .col-sm-3
+          = feat.player.team.name
+        .col-sm-3
+          = feat.player.name
+        .col-sm-2
+          = feat.kind
+        .col-sm-4
+          = feat.injury
+      - else
+        .col-sm-2
+          = feat.player.team.name
+        .col-sm-2
+          = feat.player.name
+        .col-sm-2
+          = feat.kind
+        .col-sm-4
+          = feat.injury
         .col-sm-2
           = button_to 'Delete', { action: 'destroy', id: feat.id }, method: :delete, class: 'btn-row'
