@@ -60,6 +60,11 @@ class Team < ApplicationRecord
     calculate_value!
   end
 
+  def can_hire?
+    min = team.players.map(&:cost).min
+    treasury >= min
+  end
+
   private
   def calculate_value!
     self.value = value_of_players + value_of_assistans

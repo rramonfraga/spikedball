@@ -11,7 +11,8 @@
 
     = render 'team', team: @team
 
-    %a.btn.btn-blood
-      Hire Player
+    - if @team.can_hire?
+      %a.btn.btn-blood{ href: new_team_player_path(team_id: params['id']) }
+        Hire Player
 
   = render  partial: '/layouts/small_modal'

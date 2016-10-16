@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   end
 
   resources :teams, only: [:index, :show, :new, :create] do
-    resources :players, only: [:create, :update, :destroy]
+    resources :players, only: [:new, :create, :edit, :update, :destroy]
   end
 
   namespace :api, defaults: {format: 'json'} do

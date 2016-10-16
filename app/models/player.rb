@@ -10,6 +10,8 @@ class Player < ApplicationRecord
   validates :dorsal, numericality: {only_integer: true}
 
   before_create :assign_stats_from_the_template
+  after_create :hired
+
 
   CATEGORIES = { g: "General", p: "Passing", a: "Agility", s: "Strength", e: "Extraordinary", m: "Mutation" }
 
@@ -86,6 +88,10 @@ class Player < ApplicationRecord
     self.level_up = true
   end
 
+  def hired
+    team.treasury -= cost
+    team.set_value!
+  end
 
   def search_normal_skills
     letters = player.normal.split("")

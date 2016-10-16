@@ -1,0 +1,47 @@
+%section.container
+  %h1 Hire a new Player
+
+  = form_for @player, url: { action: "create" } do |f|
+    - if @player.errors.any?
+      %h2
+        - pluralize(@player.errors.count, 'error')
+        prohibited this player from being saved
+
+    %ul
+      - @player.errors.full_messages.each do |message|
+        %li
+          = message
+
+    = render 'players/grid_stats'
+    .row.row-main.row-main-create.js-player
+      .col-sm-5
+        .row
+          .field.col-sm-1.number
+            = @team.players.count + 1
+
+          .field.col-sm-2
+            .form-group
+              = f.text_field :dorsal, class: 'form-control'
+
+          .field.col-sm-4.name
+            .form-group
+              = f.text_field :name, class: 'form-control'
+
+          .field.col-sm-5.player
+            .form-group
+              = f.collection_select(:player_template_id, @team.team.players, :id, :title, { include_blank: true }, { class: "form-control js-hire-player-selector"} )
+
+      .col-sm-7
+        .row.js-player-attributes
+          .field.col-sm-1.ma.js-ma
+          .field.col-sm-1.st.js-st
+          .field.col-sm-1.ag.js-ag
+          .field.col-sm-1.av.js-av
+          .field.col-sm-2.cost.js-cost{ data: { cost: 0 } }
+          .field.col-sm-4.skills.js-skills
+          .field.col-sm-2.experience.js-experience
+
+    .actions
+      = f.submit 'Hire Player', class: "btn btn-lg btn-block btn-blood"
+
+  = render partial: '/layouts/small_modal'

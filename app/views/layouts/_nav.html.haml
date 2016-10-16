@@ -1,7 +1,7 @@
 %nav.navbar.navbar-fixed-top
   .container
     .navbar-header
-      %button.navbar-toggle.collapsed.sr-only{ type: 'button', data: { toggle: 'collapse', target: '#navbar'}, aria: { expanded: 'false', controls: 'navbar'} }
+      %button.navbar-toggle.collapsed.sr-only{ type: 'button', data: { toggle: 'collapse', target: '#navbar'}, aria: { expanded: 'false', controls: 'navbar' } }
         %span.sr-only
           Toggle navigation
         %span.icon-bar
@@ -14,7 +14,7 @@
       %ul.nav.navbar-nav.navbar-right
         - if current_user
           %li.dropdown.nav-community-select
-            %a.dropdown-toggle.current-community-id{ href: '#', data: {toggle: 'dropdown'}}
+            %a.dropdown-toggle.current-community-id{ href: '#', data: { toggle: 'dropdown' } }
               %span
                 = current_community.name
               %b.caret
@@ -28,7 +28,7 @@
               -#     + New Community
 
           %li.dropdown.nav-championships-select
-            %a.dropdown-toggle{:href => '#', :data => {:toggle => 'dropdown'}}
+            %a.dropdown-toggle{ href: '#', data: { toggle: 'dropdown' } }
               %span
                 Championships
               %b.caret
@@ -39,7 +39,7 @@
                     = championship.name
 
           %li.dropdown.nav-teams-select
-            %a.dropdown-toggle{:href => '#', :data => {:toggle => 'dropdown'}}
+            %a.dropdown-toggle{ href: '#', data: { toggle: 'dropdown' } }
               Teams
               %b.caret
             %ul.dropdown-menu
