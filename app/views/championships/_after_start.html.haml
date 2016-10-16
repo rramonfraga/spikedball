@@ -12,7 +12,7 @@
               %li{ data: { match: match.id } }
                 %a.match{ href: community_championship_match_path(id: match.id, championship_id: @championship.id, community_code: current_community.code) }
                   = match.finish? ? match.title_result : match.title
-                - if match.can_validate?(current_user)
+                - if match.can_validate?(current_user) && !match.finish?
                   %a.match.btn.btn-blood{ href: new_community_championship_match_feat_path(championship_id: @championship.id, match_id: match.id, community_code: current_community.code) }
                     Validate
 
