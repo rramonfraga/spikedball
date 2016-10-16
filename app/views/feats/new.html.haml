@@ -13,9 +13,9 @@
 
   .row
     .col-sm-6
-      = render 'feats', feats: @match.host_feats
+      = render 'feats', match: @match, feats: @match.host_feats
     .col-sm-6
-      = render 'feats', feats: @match.visit_feats
+      = render 'feats', match: @match, feats: @match.visit_feats
 
   .row
     .col-sm-6

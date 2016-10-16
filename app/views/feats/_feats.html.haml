@@ -21,5 +21,6 @@
         = feat.kind
       .col-sm-2
         = feat.injury
-      .col-sm-2
-        = button_to 'Delete', { action: 'destroy', id: feat.id }, method: :delete, class: 'btn-row'
+      - unless match.finish?
+        .col-sm-2
+          = button_to 'Delete', { action: 'destroy', id: feat.id }, method: :delete, class: 'btn-row'

@@ -3,10 +3,23 @@
     = @match.title
 
   %h2
-    = @host_team.value.to_s + ' VS ' + @visit_team.value.to_s
+    = @match.host_team.value.to_s + ' VS ' + @match.visit_team.value.to_s
 
-  = render 'teams/team', team: @host_team
+  = render 'teams/team', team: @match.host_team
   %br
-  = render 'teams/team', team: @visit_team
+  = render 'teams/team', team: @match.visit_team
+
+%section.container
+  - if @match.finish?
+    %h1 Feats
+    .row
+      .col-sm-6
+        %h2
+          = @match.host_team.name
+        = render 'feats/feats', match: @match, feats: @match.host_feats
+      .col-sm-6
+        %h2
+          = @match.visit_team.name
+        = render 'feats/feats', match: @match, feats: @match.visit_feats
 
 = render partial: '/layouts/small_modal'
