@@ -56,6 +56,16 @@ class Team < ApplicationRecord
     save
   end
 
+  def add_fan_factor(fans, winner)
+    binding.pry
+    if winner == self || winner == Match::DRAW
+      self.fan_factor += 1 if fans > fan_factor
+    elsif winner != self || winner == Match::DRAW
+      self.fan_factor -= 1 if fans < fan_factor
+    end
+    save
+  end
+
   def set_value!
     calculate_value!
   end

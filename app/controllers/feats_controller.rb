@@ -4,7 +4,8 @@ class FeatsController < ApplicationController
   def new
     @match = Match.find_by(id: params[:match_id])
     @feat = @match.feats.new
-    @players = @match.host_team.players + @match.visit_team.players
+    @host_players = @match.host_team.players
+    @visit_players = @match.visit_team.players
   end
 
   def create

@@ -10,13 +10,27 @@
         %li
           = message
 
-  .form-group
-    = f.label :host_team_treasury, 'Host Team Treasury'
-    = f.select :host_team_treasury, options_for_select(Match::AMOUNT), {include_blank: false }, class: 'form-control'
+  .row
+    .col-sm-6
+      .form-group
+        = f.label :host_team_treasury, 'Host Team Treasury'
+        = f.select :host_team_treasury, options_for_select(Match::AMOUNT), {include_blank: false }, class: 'form-control'
 
-  .form-group
-    = f.label :visit_team_treasury, 'Visit Team Treasury'
-    = f.select :visit_team_treasury, options_for_select(Match::AMOUNT), {include_blank: false }, class: 'form-control'
+    .col-sm-6
+      .form-group
+        = f.label :visit_team_treasury, 'Visit Team Treasury'
+        = f.select :visit_team_treasury, options_for_select(Match::AMOUNT), {include_blank: false }, class: 'form-control'
+
+  .row
+    .col-sm-6
+      .form-group
+        = f.label :host_team_fan_factor, 'Host Team Fan Factor'
+        = f.select :host_team_fan_factor, options_for_select(2..18), {include_blank: false }, class: 'form-control'
+
+    .col-sm-6
+      .form-group
+        = f.label :visit_team_fan_factor, 'Visit Team Fan Factor'
+        = f.select :visit_team_fan_factor, options_for_select(2..18), {include_blank: false }, class: 'form-control'
 
   .actions
     = f.submit 'Finish Match!', class: 'btn btn-lg btn-blood'

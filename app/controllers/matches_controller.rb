@@ -43,6 +43,6 @@ class MatchesController < ApplicationController
 
   private
   def match_params
-    params.require(:match).permit(:host_team_treasury, :visit_team_treasury)
+    params.require(:match).permit(:host_team_treasury, :visit_team_treasury, :host_team_fan_factor, :visit_team_fan_factor)
   end
 end
