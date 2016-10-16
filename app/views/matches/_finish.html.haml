@@ -12,11 +12,11 @@
 
   .form-group
     = f.label :host_team_treasury, 'Host Team Treasury'
-    = f.text_field :host_team_treasury, class: 'form-control'
+    = f.select :host_team_treasury, options_for_select(Match::AMOUNT), {include_blank: false }, class: 'form-control'
 
   .form-group
     = f.label :visit_team_treasury, 'Visit Team Treasury'
-    = f.text_field :visit_team_treasury, class: 'form-control'
+    = f.select :visit_team_treasury, options_for_select(Match::AMOUNT), {include_blank: false }, class: 'form-control'
 
   .actions
     = f.submit 'Finish Match!', class: 'btn btn-lg btn-blood'

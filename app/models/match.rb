@@ -7,6 +7,7 @@ class Match < ApplicationRecord
   has_many :feats
 
   DRAW = 0
+  AMOUNT = [10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000]
 
   def finish!
     self.finish = true
