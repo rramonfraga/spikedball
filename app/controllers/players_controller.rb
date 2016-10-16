@@ -16,6 +16,19 @@ class PlayersController < ApplicationController
     end
   end
 
+  def edit
+    @player = Player.find_by(id: params[:id])
+  end
+
+  def create
+    @player = Player.find_by(id: params[:id])
+    if @player.update_attributes(attributes)
+      redirect_to action: 'show', controller: 'teams', community_code: current_community.code, id: @team.id
+    else
+      render(:edit)
+    end
+  end
+
   def destroy
     player = Player.find_by(id: params[:id])
     player.destroy
