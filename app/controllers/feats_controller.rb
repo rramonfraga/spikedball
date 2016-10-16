@@ -11,6 +11,8 @@ class FeatsController < ApplicationController
   def create
     @match = Match.find_by(id: params[:match_id])
     @feat = @match.feats.new feat_params
+    @host_players = @match.host_team.players
+    @visit_players = @match.visit_team.players
     if @feat.save
       redirect_to action: 'new', controller: 'feats', community_code: current_community.code, championship_id: params["championship_id"], match_id: params["match_id"]
     else

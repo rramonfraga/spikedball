@@ -24,4 +24,8 @@ class User < ApplicationRecord
   def owner_team?(team)
     id == team.user_id
   end
+
+  def can_level_up?(player, community)
+    owner_team?(player.team) || admin?(community)
+  end
 end

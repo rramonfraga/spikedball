@@ -15,6 +15,7 @@ class Team < ApplicationRecord
   validates :treasury, numericality: { greater_than_or_equal_to: 0 }
 
   after_create :set_value!
+  before_save :calculate_value
 
   FAN_FACTOR = 10000
   ASSISTANT_COACHES = 10000
@@ -66,7 +67,8 @@ class Team < ApplicationRecord
   end
 
   def set_value!
-    calculate_value!
+    calculate_value
+    save
   end
 
   def can_hire?
@@ -75,9 +77,8 @@ class Team < ApplicationRecord
   end
 
   private
-  def calculate_value!
+  def calculate_value
     self.value = value_of_players + value_of_assistans
-    save!
   end
 
   def value_of_players
