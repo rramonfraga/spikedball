@@ -15,7 +15,7 @@ class Team < ApplicationRecord
   validates :treasury, numericality: { greater_than_or_equal_to: 0 }
 
   after_create :set_value!
-  before_save :calculate_value
+  before_update :calculate_value
 
   FAN_FACTOR = 10000
   ASSISTANT_COACHES = 10000
@@ -24,6 +24,10 @@ class Team < ApplicationRecord
 
   def team
     team_template
+  end
+
+  def players_by_game
+    players.sort_by { |player| player.player_template_id }
   end
 
   def calculate_points(championship)

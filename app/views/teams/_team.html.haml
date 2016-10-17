@@ -1,6 +1,6 @@
 .row
   = render 'players/grid_stats'
-  - team.players.each_with_index do |player, index|
+  - team.players_by_game.each_with_index do |player, index|
     - if player.miss_next_game?
       = render 'players/injured_player', player: player, index: index + 1
     - else
