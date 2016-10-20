@@ -23,6 +23,10 @@ class Player < ApplicationRecord
     skill_templates
   end
 
+  def live?
+    !dead
+  end
+
   def add_points(points)
     self.experience += points.to_i
     new_level if new_level?
@@ -76,7 +80,8 @@ class Player < ApplicationRecord
   end
 
   def dead!
-    destroy
+    self.dead = true
+    save!
   end
 
   def new_level?

@@ -27,7 +27,7 @@ class Team < ApplicationRecord
   end
 
   def players_by_game
-    players.sort_by { |player| player.player_template_id }
+    live_players.sort_by { |player| player.player_template_id }
   end
 
   def calculate_points(championship)
@@ -81,6 +81,10 @@ class Team < ApplicationRecord
   end
 
   private
+  def live_players
+    players.select(&:live?)
+  end
+  
   def calculate_value
     self.value = value_of_players + value_of_assistans
   end
