@@ -84,7 +84,7 @@ class Team < ApplicationRecord
   def live_players
     players.select(&:live?)
   end
-  
+
   def calculate_value
     self.value = value_of_players + value_of_assistans
   end

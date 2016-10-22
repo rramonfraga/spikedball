@@ -21,9 +21,9 @@ class Championship < ApplicationRecord
   end
 
   def clasification
-    teams.sort do |team1, team2|
-      team2.calculate_points(self) <=> team1.calculate_points(self)
-    end
+    teams.sort_by do |team|
+      [team.calculate_points(self), team.calculate_touchdonws(self)]
+    end.reverse
   end
 
   def join!(team)

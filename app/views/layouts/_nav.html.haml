@@ -1,7 +1,7 @@
 %nav.navbar.navbar-fixed-top
   .container
     .navbar-header
-      %button.navbar-toggle.collapsed.sr-only{ type: 'button', data: { toggle: 'collapse', target: '#navbar'}, aria: { expanded: 'false', controls: 'navbar' } }
+      %button.navbar-toggle.collapsed{ type: 'button', data: { toggle: 'collapse', target: '.navbar-collapse'} }
         %span.sr-only
           Toggle navigation
         %span.icon-bar
@@ -10,7 +10,7 @@
       %a.navbar-brand{ href: "/"}
         = image_tag asset_path('logo-spiked-ball.png'), height: 55
 
-    #navbar.navbar-collapse.collapse{ role: 'navigation'}
+    .navbar-collapse.collapse{ role: 'navigation'}
       %ul.nav.navbar-nav.navbar-right
         - if current_user
           %li.dropdown.nav-community-select
