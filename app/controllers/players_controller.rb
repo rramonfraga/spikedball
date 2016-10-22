@@ -20,7 +20,7 @@ class PlayersController < ApplicationController
     @player = Player.find_by(id: params[:id])
   end
 
-  def create
+  def update
     @player = Player.find_by(id: params[:id])
     if @player.update_attributes(attributes)
       redirect_to action: 'show', controller: 'teams', community_code: current_community.code, id: @team.id
