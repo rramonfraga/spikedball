@@ -6,7 +6,7 @@
       - @championship.errors.full_messages.each do |msg|
         %li.alert.alert-danger{ role: 'alert' } msg
 
-  = form_for @championship, url: new_community_championship_path(community_code: current_community.id) do |form|
+  = form_for @championship, url: community_championships_path(community_code: current_community.id) do |form|
     .form-group
       = form.label :name
       = form.text_field :name, class: 'form-control'

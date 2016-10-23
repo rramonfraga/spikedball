@@ -43,7 +43,7 @@ class ChampionshipsController < ApplicationController
   private
   def championship_params
     base_params = params.require(:championship).permit(:name, :kind, :init_treasury)
-    base_params.merge!(community_code: current_community.code)
+    base_params.merge!(community_id: current_community.id)
   end
 
 end
