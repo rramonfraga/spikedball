@@ -1,0 +1,35 @@
+%h1 Listing level_rises
+
+%table
+  %thead
+    %tr
+      %th Player
+      %th First dice
+      %th Second dice
+      %th Title
+      %th Feat
+      %th Skill
+      %th Characteristic
+      %th Value
+      %th
+      %th
+      %th
+
+  %tbody
+    - @level_rises.each do |level_rise|
+      %tr
+        %td= level_rise.player_id
+        %td= level_rise.first_dice
+        %td= level_rise.second_dice
+        %td= level_rise.title
+        %td= level_rise.feat_id
+        %td= level_rise.skill_id
+        %td= level_rise.characteristic
+        %td= level_rise.value
+        %td= link_to 'Show', level_rise
+        %td= link_to 'Edit', edit_level_rise_path(level_rise)
+        %td= link_to 'Destroy', level_rise, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Level rise', new_level_rise_path

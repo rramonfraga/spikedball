@@ -1,0 +1,34 @@
+= form_for @level_rise do |f|
+  - if @level_rise.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@level_rise.errors.count, "error")} prohibited this level_rise from being saved:"
+      %ul
+        - @level_rise.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :player_id
+    = f.text_field :player_id
+  .field
+    = f.label :first_dice
+    = f.number_field :first_dice
+  .field
+    = f.label :second_dice
+    = f.number_field :second_dice
+  .field
+    = f.label :title
+    = f.text_field :title
+  .field
+    = f.label :feat_id
+    = f.text_field :feat_id
+  .field
+    = f.label :skill_id
+    = f.text_field :skill_id
+  .field
+    = f.label :characteristic
+    = f.text_field :characteristic
+  .field
+    = f.label :value
+    = f.number_field :value
+  .actions
+    = f.submit 'Save'

@@ -1,0 +1,30 @@
+%p#notice= notice
+
+%p
+  %b Player:
+  = @level_rise.player_id
+%p
+  %b First dice:
+  = @level_rise.first_dice
+%p
+  %b Second dice:
+  = @level_rise.second_dice
+%p
+  %b Title:
+  = @level_rise.title
+%p
+  %b Feat:
+  = @level_rise.feat_id
+%p
+  %b Skill:
+  = @level_rise.skill_id
+%p
+  %b Characteristic:
+  = @level_rise.characteristic
+%p
+  %b Value:
+  = @level_rise.value
+
+= link_to 'Edit', edit_level_rise_path(@level_rise)
+\|
+= link_to 'Back', level_rises_path

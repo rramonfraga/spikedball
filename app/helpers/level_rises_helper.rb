@@ -1,0 +1,2 @@
+module LevelRisesHelper
+end
