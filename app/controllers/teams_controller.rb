@@ -21,7 +21,7 @@ class TeamsController < ApplicationController
   def create
     @team = current_user.teams.new team_params
     if @team.save
-      redirect_to action: 'show', controller: 'teams', community_code: current_community.code, id: @team.id
+      redirect_to action: 'show', controller: 'teams', id: @team.id
     else
       render(:new)
     end

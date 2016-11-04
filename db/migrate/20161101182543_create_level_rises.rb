@@ -6,9 +6,8 @@ class CreateLevelRises < ActiveRecord::Migration[5.0]
       t.string :title
       t.string :characteristic
       t.integer :value
-      t.references :player_id,  index: true
-      t.references :feat_id,    index: true
-      t.references :skill_id,   index: true
+      t.references :player,  index: true
+      t.references :skill,   index: true
 
       t.timestamps
     end

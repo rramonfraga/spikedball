@@ -80,13 +80,13 @@ class Team < ApplicationRecord
     treasury >= min
   end
 
+  def calculate_value
+    self.value = value_of_players + value_of_assistans
+  end
+
   private
   def live_players
     players.select(&:live?)
-  end
-
-  def calculate_value
-    self.value = value_of_players + value_of_assistans
   end
 
   def value_of_players

@@ -1,5 +1,7 @@
 class PlayersController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_player, only: [:show, :edit, :update, :destroy]
+
 
   def new
     @team = Team.find_by(id: params[:team_id])
@@ -9,34 +11,36 @@ class PlayersController < ApplicationController
   def create
     @team = Team.find_by(id: params[:team_id])
     @player = @team.players.new player_params
-    if @player.save
-      redirect_to action: 'show', controller: 'teams', community_code: current_community.code, id: @team.id
-    else
-      render(:new)
-    end
+    go_to_team(@team.id) if @player.save
+    render(:new)
+  end
+
+  def show
   end
 
   def edit
-    @player = Player.find_by(id: params[:id])
   end
 
   def update
-    @player = Player.find_by(id: params[:id])
-    if @player.update_attributes(attributes)
-      redirect_to action: 'show', controller: 'teams', community_code: current_community.code, id: @team.id
-    else
-      render(:edit)
-    end
+    go_to_team(@player.team_id) if @player.update_attributes(player_params)
+    render(:edit)
   end
 
   def destroy
-    player = Player.find_by(id: params[:id])
-    player.destroy
-    redirect_to action: 'show', controller: 'teams', team_id: params["team_id"]
+    @player.destroy
+    go_to_team(@player.team_id)
   end
 
   private
   def player_params
-    params.require(:player).permit(:dorsal, :name, :player_template_id)
+    params.require(:player).permit(:dorsal, :name, :player_template_id, :ma, :st, :ag, :av, :cost)
+  end
+
+  def go_to_team(team_id)
+    redirect_to action: 'show', controller: 'teams', community_code: current_community.code, id: team_id
+  end
+
+  def set_player
+    @player = Player.find_by(id: params[:id])
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161020103452) do
+ActiveRecord::Schema.define(version: 20161101182543) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,20 @@ ActiveRecord::Schema.define(version: 20161020103452) do
     t.string   "injury"
     t.index ["match_id"], name: "index_feats_on_match_id", using: :btree
     t.index ["player_id"], name: "index_feats_on_player_id", using: :btree
+  end
+
+  create_table "level_rises", force: :cascade do |t|
+    t.integer  "first_dice"
+    t.integer  "second_dice"
+    t.string   "title"
+    t.string   "characteristic"
+    t.integer  "value"
+    t.integer  "player_id"
+    t.integer  "skill_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["player_id"], name: "index_level_rises_on_player_id", using: :btree
+    t.index ["skill_id"], name: "index_level_rises_on_skill_id", using: :btree
   end
 
   create_table "matches", force: :cascade do |t|

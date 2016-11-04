@@ -6,7 +6,10 @@
       .field.col-sm-2
         = player.dorsal
       .field.col-sm-4.name
-        = player.name
+        - if current_user.admin?(current_community) || current_user.owner_team?(player.team)
+          = link_to player.name, edit_player_path(player)
+        - else
+          = player.name
       .field.col-sm-5.player
         = player.title
   .col-sm-7
@@ -29,8 +32,8 @@
       .field.col-sm-2.experience
         = player.experience
         - if player.level_up? && current_user.can_level_up?(player, current_community)
-          %a#level-up{ href: edit_team_player_path(team_id: player.team_id, id: player.id) }
+          %a#level-up{ href: edit_player_path(id: player.id) }
             = image_tag asset_path('level_up.png')
         - elsif player.level_up? && !current_user.can_level_up?(player, current_community)
-          %a#level-up{ href: edit_team_player_path(team_id: player.team_id, id: player.id) }
+          %a#level-up{ href: edit_player_path(id: player.id) }
             = image_tag asset_path('level_up.png')

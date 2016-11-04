@@ -21,9 +21,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :teams, only: [:index, :show, :new, :create] do
-    resources :players, only: [:new, :create, :edit, :update, :destroy] do
-      resources :level_rises, only: [:create, :edit, :update]
+  shallow do
+    resources :teams, only: [:index, :show, :new, :create] do
+      resources :players, only: [:new, :create, :show, :edit, :update, :destroy] do
+        resources :level_rises, only: [:create, :edit, :update]
+      end
     end
   end
 

@@ -5,6 +5,7 @@ class Player < ApplicationRecord
   has_many :player_skills
   has_many :skill_templates, through: :player_skills
   has_many :feats
+  has_many :level_rises
 
   validates :name, :dorsal, :player_template_id, presence: true
   validates :dorsal, numericality: {only_integer: true}
@@ -90,12 +91,13 @@ class Player < ApplicationRecord
 
   def new_level
     self.level = actual_level
-    self.level_up = true
+    self.level_rise.create(title: level)
   end
 
   def hired
     team.treasury -= cost
-    team.set_value!
+    team.calculate_value
+    team.save
   end
 
   def search_normal_skills
