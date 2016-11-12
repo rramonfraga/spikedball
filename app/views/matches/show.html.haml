@@ -11,6 +11,26 @@
 
 %section.container
   - if @match.finish?
+    %h1 Treasury collection
+    .row
+      .col-sm-6
+        %h3
+          Host Team Treasury: +
+          = @match.host_team_treasury
+      .col-sm-6
+        %h3
+          Visit Team Treasury: +
+          = @match.visit_team_treasury
+    %h1 Fan Factor Roll Dices
+    .row
+      .col-sm-6
+        %h3
+          Host Team Fan Factor Roll:
+          = @match.host_team_fan_factor
+      .col-sm-6
+        %h3
+          Visit Team Fan Factor Roll:
+          = @match.visit_team_fan_factor
     %h1 Feats
     .row
       .col-sm-6
