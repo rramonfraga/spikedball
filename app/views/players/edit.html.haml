@@ -1,78 +1,135 @@
-.row
-  .form
-    = form_for @player, url: { action: "update" } do |f|
-      .row.row-main.row-main-create.js-player
-        .row
-          .field.col-sm-2
-            .form-group
-              = f.label :dorsal
-              = f.text_field :dorsal, class: 'form-control'
-          .field.col-sm-4.name
-            .form-group
-              = f.label :name
-              = f.text_field :name, class: 'form-control'
-          .field.col-sm-5.player
-            %b Title
-            %p
-              = @player.title
-
-        .row
-          .field.col-sm-1.ma
-            .form-group
-              = f.label :ma
-              - if current_user.admin?(current_community)
-                = f.text_field :ma, class: 'form-control', aria: { describedby: 'sizing-addon2' }
-              - else
-                = @player.ma
-          .field.col-sm-1.st
-            .form-group
-              = f.label :st
-              - if current_user.admin?(current_community)
-                = f.text_field :st, class: 'form-control', aria: { describedby: 'sizing-addon2' }
-              - else
-                = @player.st
-          .field.col-sm-1.ag
-            .form-group
-              = f.label :ag
-              - if current_user.admin?(current_community)
-                = f.text_field :ag, class: 'form-control', aria: { describedby: 'sizing-addon2' }
-              - else
-                = @player.ag
-          .field.col-sm-1.av
-            .form-group
-              = f.label :av
-              - if current_user.admin?(current_community)
-                = f.text_field :av, class: 'form-control', aria: { describedby: 'sizing-addon2' }
-              - else
-                = @player.av
-          .field.col-sm-2.cost
-            .form-group
-              = f.label :cost
-              - if current_user.admin?(current_community)
-                = f.text_field :cost, class: 'form-control'
-              - else
-                = @player.cost
-          .field.col-sm-4.skill
-            %b Skills
-            %p
-              - @player.skill_templates.each do |skill|
-                %a.js-skill{ data: { skill: { id: skill.id }}}
-                  = skill.name
-                  ,
-          .field.col-sm-2.experience
-            %b Experienced
-            %p
-              = @player.experience
-              - if @player.level_up? && current_user.can_level_up?(@player, current_community)
-                %a#level-up{ href: edit_player_path(id: @player.id) }
-                  = image_tag asset_path('level_up.png')
-              - elsif @player.level_up? && !current_user.can_level_up?(@player, current_community)
-                %a#level-up{ href: edit_player_path(id: @player.id) }
-                  = image_tag asset_path('level_up.png')
-      .row
-        .actions
-          = f.submit 'Update Player', class: "btn btn-lg btn-block btn-blood"
+%section.container
   .row
-    - @player.level_rises.each do |level_rise|
-      - if level_rise
-        Hola
+    .form
+      = form_for @player, url: { action: "update" } do |f|
+        .row.row-main.row-main-create.js-player
+          .row
+            .field.col-sm-2
+              .form-group
+                = f.label :dorsal
+                = f.text_field :dorsal, class: 'form-control'
+            .field.col-sm-4.name
+              .form-group
+                = f.label :name
+                = f.text_field :name, class: 'form-control'
+            .field.col-sm-5.player
+              %b Title
+              %p
+                = @player.title
+
+          .row
+            .field.col-sm-1.ma
+              .form-group
+                = f.label :ma
+                - if current_user.admin?(current_community)
+                  = f.text_field :ma, class: 'form-control', aria: { describedby: 'sizing-addon2' }
+                - else
+                  = @player.ma
+            .field.col-sm-1.st
+              .form-group
+                = f.label :st
+                - if current_user.admin?(current_community)
+                  = f.text_field :st, class: 'form-control', aria: { describedby: 'sizing-addon2' }
+                - else
+                  = @player.st
+            .field.col-sm-1.ag
+              .form-group
+                = f.label :ag
+                - if current_user.admin?(current_community)
+                  = f.text_field :ag, class: 'form-control', aria: { describedby: 'sizing-addon2' }
+                - else
+                  = @player.ag
+            .field.col-sm-1.av
+              .form-group
+                = f.label :av
+                - if current_user.admin?(current_community)
+                  = f.text_field :av, class: 'form-control', aria: { describedby: 'sizing-addon2' }
+                - else
+                  = @player.av
+            .field.col-sm-2.cost
+              .form-group
+                = f.label :cost
+                - if current_user.admin?(current_community)
+                  = f.text_field :cost, class: 'form-control'
+                - else
+                  = @player.cost
+            .field.col-sm-4.skill
+              %b Skills
+              %p
+                - @player.skill_templates.each do |skill|
+                  %a.js-skill{ data: { skill: { id: skill.id }}}
+                    = skill.name
+                    ,
+            .field.col-sm-2.experience
+              %b Experienced
+              %p
+                = @player.experience
+                - if @player.level_up? && current_user.can_level_up?(@player, current_community)
+                  %a#level-up{ href: edit_player_path(id: @player.id) }
+                    = image_tag asset_path('level_up.png')
+                - elsif @player.level_up? && !current_user.can_level_up?(@player, current_community)
+                  %a#level-up{ href: edit_player_path(id: @player.id) }
+                    = image_tag asset_path('level_up.png')
+        .row
+          %h2 Levels
+          = f.fields_for :level_rises do |c|
+            - if !c.object.assigned?
+              .row
+                .col-sm-3
+                  = c.label :title
+                  = c.text_field :title, class: 'form-control', disabled: true
+                .col-sm-3
+                  = c.label :first_dice, 'First Dice: '
+                  = c.text_field :first_dice, class: 'form-control', disabled: true
+                .col-sm-3
+                  = c.label :second_dice, 'Second Dice: '
+                  = c.text_field :second_dice, class: 'form-control', disabled: true
+              .row
+                .col-sm-4
+                  %h4 Choose one:
+                  = c.label :id, class: 'sr-only'
+                  = c.text_field :id, hidden: true
+              .row
+                - if c.object.st?
+                  .col-sm-4
+                    = c.label :characteristic, 'ST (+50000)'
+                    = c.select :characteristic, ['+1 ST'], { include_blank: true }, class: 'form-control'
+                - elsif c.object.ag?
+                  .col-sm-4
+                    = c.label :characteristic, 'AG (+40000)'
+                    = c.select :characteristic, ['+1 AG'], { include_blank: true }, class: 'form-control'
+                - elsif c.object.mo_or_av?
+                  .col-sm-4
+                    = c.label :characteristic, 'MA or AV (+30000)'
+                    = c.select :characteristic, ['+1 MA','+1 AV'], { include_blank: true }, class: 'form-control'
+                - if c.object.double?
+                  .col-sm-4
+                    = c.label :skill, 'Skill (Double +30000 or Simple +20000)'
+                    = c.collection_select(:skill_id, @player.all_skills, :id, :name, { include_blank: true }, class: 'form-control')
+                - else
+                  .col-sm-4
+                    = c.label :skill, 'Skill (Simple +20000)'
+                    = c.collection_select(:skill_id, @player.normal_skills, :id, :name, { include_blank: true }, class: 'form-control')
+            - else
+              .row
+                .col-sm-3
+                  = c.label :title
+                  = c.text_field :title, class: 'form-control', disabled: true
+                .col-sm-3
+                  = c.label :first_dice, 'First Dice: '
+                  = c.text_field :first_dice, class: 'form-control', disabled: true
+                .col-sm-3
+                  = c.label :second_dice, 'Second Dice: '
+                  = c.text_field :second_dice, class: 'form-control', disabled: true
+                .col-sm-3
+                  - if c.object.characteristic.present?
+                    = c.label :characteristic
+                    = c.text_field :characteristic, class: 'form-control', disabled: true
+                  - elsif
+                    = c.label :skill
+                    = c.text_field :skill_name, class: 'form-control', disabled: true
+        %br
+        .row
+          .actions
+            = f.submit 'Update Player', class: "btn btn-lg btn-block btn-blood"
+        %br

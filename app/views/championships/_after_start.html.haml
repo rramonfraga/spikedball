@@ -20,7 +20,7 @@
       .col-xs-1
         = index + 1
       .col-xs-3
-        = team.name
+        = link_to team.name, team_path(team)
       .col-xs-2
         = team.calculate_points(@championship)
       .col-xs-2

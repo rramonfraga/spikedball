@@ -22,8 +22,12 @@ class PlayersController < ApplicationController
   end
 
   def update
-    go_to_team(@player.team_id) if @player.update_attributes(player_params)
-    render(:edit)
+    @player.update_attributes(player_params)
+    if @player.save
+      go_to_team(@player.team_id)
+    else
+      render(:edit)
+    end
   end
 
   def destroy
@@ -33,7 +37,7 @@ class PlayersController < ApplicationController
 
   private
   def player_params
-    params.require(:player).permit(:dorsal, :name, :player_template_id, :ma, :st, :ag, :av, :cost)
+    params.require(:player).permit(:dorsal, :name, :player_template_id, :ma, :st, :ag, :av, :cost, level_rises_attributes: [:id, :characteristic, :skill_id])
   end
 
   def go_to_team(team_id)

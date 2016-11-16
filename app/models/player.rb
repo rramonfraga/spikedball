@@ -7,14 +7,16 @@ class Player < ApplicationRecord
   has_many :feats
   has_many :level_rises
 
+  accepts_nested_attributes_for :level_rises, reject_if: proc { |attributes| attributes['characteristic'].present? && attributes['skill_id'].present? }
+
   validates :name, :dorsal, :player_template_id, presence: true
   validates :dorsal, numericality: {only_integer: true}
+  validates_associated :level_rises
 
   before_create :assign_stats_from_the_template
   after_create :hired
 
-
-  CATEGORIES = { g: "General", p: "Passing", a: "Agility", s: "Strength", e: "Extraordinary", m: "Mutation" }
+  CATEGORIES = { G: "General", P: "Passing", A: "Agility", S: "Strength", E: "Extraordinary", M: "Mutation" }
 
   def player
     player_template
@@ -89,9 +91,13 @@ class Player < ApplicationRecord
     level != actual_level
   end
 
+  def level_up?
+    level_rises.find_index { |l| !l.assigned? }
+  end
+
   def new_level
     self.level = actual_level
-    self.level_rise.create(title: level)
+    self.level_rises.create(title: level)
   end
 
   def hired
@@ -100,23 +106,44 @@ class Player < ApplicationRecord
     team.save
   end
 
-  def search_normal_skills
-    letters = player.normal.split("")
-    letters.map do |letter|
-      category = CATEGORIES[letter.to_sym]
-      skills << SkillTemplate.by_category( category )
+  def normal_skills
+    search_skills(normal_categories)
+  end
+
+  def all_skills
+    @_categories ||= normal_categories + double_categories
+    search_skills(@_categories)
+  end
+
+  def add_characteritic(key, improve_cost)
+    return if !respond_to?(:"#{key}=")
+    send(:"#{key}=", (eval("#{key}") + 1))
+    self.cost += improve_cost
+    save
+  end
+
+  def add_skill(id)
+    skill = SkillTemplate.find(id)
+    return unless skill.present?
+    skills << skill
+    double?(skill) ? self.cost += 30000 : self.cost += 20000
+    save
+  end
+
+  def normal_categories
+    @_normal_categories ||= player.normal.split("").map do |letter|
+      CATEGORIES[letter.to_sym]
     end
   end
 
-  def search_double_skills
-    letters = player.double.split("")
-    letters.map do |letter|
-      category = CATEGORIES[letter.to_sym]
-      skills << SkillTemplate.by_category( category )
+  def double_categories
+    @_double_categories ||= player.double.split("").map do |letter|
+      CATEGORIES[letter.to_sym]
     end
   end
 
   private
+
   def assign_stats_from_the_template
     self.cost = player_template.cost
     self.title = player_template.title
@@ -125,5 +152,14 @@ class Player < ApplicationRecord
     self.ag = player_template.ag
     self.av = player_template.av
     self.skill_templates = player_template.skill_templates if player_template.skill_templates
+  end
+
+  def search_skills(categories)
+    skills_to_assign = categories.map { |c| SkillTemplate.by_category(c) }.flatten
+    skills_to_assign - skills
+  end
+
+  def double?(skill)
+    double_categories.include? skill.category
   end
 end

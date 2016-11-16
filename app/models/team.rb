@@ -90,7 +90,7 @@ class Team < ApplicationRecord
   end
 
   def value_of_players
-    players.reduce(0) do |val, p|
+    live_players.reduce(0) do |val, p|
       p.miss_next_game? ? val : val + p.cost
     end
   end

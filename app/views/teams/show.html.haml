@@ -11,7 +11,7 @@
 
     = render 'team', team: @team
 
-    - if @team.can_hire?
+    - if @team.can_hire? && current_user.admin?(current_community) || current_user.owner_team?(@team)
       %a.btn.btn-blood{ href: new_team_player_path(team_id: params['id']) }
         Hire Player
 
