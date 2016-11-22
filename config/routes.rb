@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   resources :communities, path: '/c', param: :code, only: [:show, :new, :create] do
     resources :admin, only: [:index]
+    resources :fast_rules, only: [:index]
 
     resources :championships, only: [:show, :new, :create] do
       member do

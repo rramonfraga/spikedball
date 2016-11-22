@@ -11,7 +11,7 @@ class PlayersController < ApplicationController
   def create
     @team = Team.find_by(id: params[:team_id])
     @player = @team.players.new player_params
-    go_to_team(@team.id) if @player.save
+    return go_to_team(@team.id) if @player.save
     render(:new)
   end
 
@@ -23,11 +23,8 @@ class PlayersController < ApplicationController
 
   def update
     @player.update_attributes(player_params)
-    if @player.save
-      go_to_team(@player.team_id)
-    else
-      render(:edit)
-    end
+    return go_to_team(@player.team_id) if @player.save
+    render(:edit)
   end
 
   def destroy

@@ -9,6 +9,10 @@
         = image_tag asset_path('logo-spiked-ball.png'), height: 55
 
     .navbar-collapse.collapse{ role: 'navigation'}
+      %ul.nav.navbar-nav.navbar-left
+        %li
+          %a{ href: community_fast_rules_path(community_code: current_community.code) }
+            Fast Rules
       %ul.nav.navbar-nav.navbar-right
         - if current_user
           %li.dropdown.nav-community-select
