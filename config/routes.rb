@@ -24,6 +24,10 @@ Rails.application.routes.draw do
 
   shallow do
     resources :teams, only: [:index, :show, :new, :create] do
+      member do
+        get 'add_re_roll'
+        get 'add_apothecary'
+      end
       resources :players, only: [:new, :create, :show, :edit, :update, :destroy] do
         resources :level_rises, only: [:create, :edit, :update]
       end

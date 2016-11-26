@@ -11,8 +11,14 @@
 
     = render 'team', team: @team
 
-    - if @team.can_hire? && current_user.admin?(current_community) || current_user.owner_team?(@team)
+    - if @team.can_hire? && (current_user.admin?(current_community) || current_user.owner_team?(@team))
       %a.btn.btn-blood{ href: new_team_player_path(team_id: params['id']) }
         Hire Player
+    - if @team.buy_re_roll? && (current_user.admin?(current_community) || current_user.owner_team?(@team))
+      %a.btn.btn-blood{ href: add_re_roll_team_path(team_id: params['id']) }
+        = "Buy Re Roll (+#{@team.team.re_roll * 2})"
+    - if @team.buy_apothecary? && (current_user.admin?(current_community) || current_user.owner_team?(@team))
+      %a.btn.btn-blood{ href: add_apothecary_team_path(team_id: params['id']) }
+        Buy Apothecary (+50000)
 
   = render  partial: '/layouts/small_modal'

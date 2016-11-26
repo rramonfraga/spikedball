@@ -80,6 +80,28 @@ class Team < ApplicationRecord
     treasury >= min
   end
 
+  def buy_re_roll?
+    treasury >= 2 * team_template.re_roll
+  end
+
+  def add_re_roll
+    return false unless buy_re_roll?
+    self.treasury -= 2*team_template.re_roll
+    self.re_rolls += 1
+    save!
+  end
+
+  def buy_apothecary?
+    treasury >= APOTHECARIES
+  end
+
+  def add_apothecary
+    return false unless buy_apothecary?
+    self.treasury -= APOTHECARIES
+    self.apothecaries += 1
+    save!
+  end
+
   def calculate_value
     self.value = value_of_players + value_of_assistans
   end

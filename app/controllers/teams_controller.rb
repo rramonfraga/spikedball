@@ -27,6 +27,18 @@ class TeamsController < ApplicationController
     end
   end
 
+  def add_re_roll
+    @team = Team.find_by(id: params[:id])
+    @team.add_re_roll
+    redirect_to action: 'show', controller: 'teams', id: @team.id
+  end
+
+  def add_apothecary
+    @team = Team.find_by(id: params[:id])
+    @team.add_apothecary
+    redirect_to action: 'show', controller: 'teams', id: @team.id
+  end
+
   private
   def team_params
     params.require(:team).permit( :name,
