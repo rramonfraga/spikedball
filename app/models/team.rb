@@ -92,7 +92,7 @@ class Team < ApplicationRecord
   end
 
   def buy_apothecary?
-    treasury >= APOTHECARIES
+    treasury >= APOTHECARIES && apothecaries.zero?
   end
 
   def add_apothecary
