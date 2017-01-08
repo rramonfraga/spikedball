@@ -7,17 +7,12 @@ class Championship < ApplicationRecord
 
   validates :name, :kind, :community_id, presence: true
 
-  def create_seasons
-    (@teams.count - 1).times do |index|
-      season = seasons.create round: index + 1
-      season.create_matches(@teams)
-      rotate_teams
-    end
+  def direct_first_half
+    create_seasons(1, true)
   end
 
-  def rotate_teams
-    last = @teams.pop
-    @teams.insert(1, last)
+  def direct_second_half
+    create_seasons(number_of_teams, false)
   end
 
   def clasification
@@ -33,12 +28,34 @@ class Championship < ApplicationRecord
 
   def start!
     self.start = true
-    @teams = teams.to_a
-    create_seasons
+    direct_first_half
     save!
   end
 
   def community_code
     community_id
+  end
+
+  private
+
+  def create_seasons(round, first_half)
+    (number_of_teams - 1).times do |index|
+      season = seasons.create round: index + round
+      season.create_matches(ordered_teams, first_half)
+      rotate_teams
+    end
+  end
+
+  def rotate_teams
+    last = ordered_teams.pop
+    ordered_teams.insert(1, last)
+  end
+
+  def ordered_teams
+    @_ordered_teams ||= teams.sort_by(&:id)
+  end
+
+  def number_of_teams
+    @_number_of_teams ||= ordered_teams.count
   end
 end
