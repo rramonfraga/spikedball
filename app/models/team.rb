@@ -80,6 +80,18 @@ class Team < ApplicationRecord
     treasury >= min
   end
 
+  def hired_collection
+    @hired_collection = []
+    team.players.each do |pt|
+      if group_by_title[pt.title].present?
+        @hired_collection << pt if group_by_title[pt.title].count < pt.quantity
+      else
+        @hired_collection << pt
+      end
+    end
+    @hired_collection
+  end
+
   def buy_re_roll?
     treasury >= 2 * team_template.re_roll
   end
@@ -109,6 +121,10 @@ class Team < ApplicationRecord
   private
   def live_players
     players.select(&:live?)
+  end
+
+  def group_by_title
+    @group_by_title ||= players.group_by(&:title)
   end
 
   def value_of_players
