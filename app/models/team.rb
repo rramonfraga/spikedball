@@ -26,6 +26,10 @@ class Team < ApplicationRecord
     team_template
   end
 
+  def live_players
+    @live_players ||= players.select(&:live?)
+  end
+
   def players_by_game
     live_players.sort_by { |player| player.player_template_id }
   end
@@ -119,12 +123,9 @@ class Team < ApplicationRecord
   end
 
   private
-  def live_players
-    players.select(&:live?)
-  end
 
   def group_by_title
-    @group_by_title ||= players.group_by(&:title)
+    @group_by_title ||= live_players.group_by(&:title)
   end
 
   def value_of_players

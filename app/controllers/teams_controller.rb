@@ -6,9 +6,8 @@ class TeamsController < ApplicationController
   end
 
   def show
-    if @team = Team.find_by(id: params[:id])
-      @players = @team.players
-    else
+    @team = Team.find_by(id: params[:id])
+    unless @team.present?
       render status: 404, file: '/public/404.html'
     end
   end
