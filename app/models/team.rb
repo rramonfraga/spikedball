@@ -34,24 +34,6 @@ class Team < ApplicationRecord
     live_players.sort_by { |player| player.player_template_id }
   end
 
-  def calculate_points(championship)
-    championship.matches.reduce(0) do |points, match|
-      if match.winner?(self)
-        points += 3
-      elsif match.draw?(self)
-        points += 1
-      else
-        points += 0
-      end
-    end
-  end
-
-  def calculate_touchdonws(championship)
-    championship.matches.reduce(0) do |touchdonws, match|
-      touchdonws + match.touchdonws(self)
-    end
-  end
-
   def joined?
     active_championship.present?
   end

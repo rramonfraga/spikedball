@@ -17,7 +17,13 @@ class Championship < ApplicationRecord
 
   def clasification
     teams.sort_by do |team|
-      [team.calculate_points(self), team.calculate_touchdonws(self)]
+      [
+        calculate_points_by(team),
+        calculate_of('touchdonw', team),
+        calculate_of('casualties', team),
+        calculate_of('complention', team),
+        calculate_of('interception', team)
+      ]
     end.reverse
   end
 
@@ -36,7 +42,38 @@ class Championship < ApplicationRecord
     community_id
   end
 
+  def calculate_of(type, team)
+    matches = fetch_matches_for(team)
+    feth_feats_by(type, matches, team.id).count
+  end
+
+  def matches_played_by(team)
+    fetch_matches_for(team).select(&:finish?).count
+  end
+
+  def calculate_points_by(team)
+    fetch_matches_for(team).reduce(0) do |points, match|
+      if match.winner?(team)
+        points += 3
+      elsif match.draw?(team)
+        points += 1
+      else
+        points += 0
+      end
+    end
+  end
+
   private
+
+  def fetch_matches_for(team)
+    matches.select{ |match| match.include_team?(team.id) }
+  end
+
+  def feth_feats_by(type, matches, team_id)
+    matches.map do |match|
+      match.feats.select{ |feat| feat.kind == type && feat.owner_team?(team_id) }
+    end.flatten
+  end
 
   def create_seasons(round, first_half)
     (number_of_teams - 1).times do |index|

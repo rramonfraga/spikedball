@@ -7,6 +7,8 @@ class Match < ApplicationRecord
   has_many :feats
 
   DRAW = 0
+  PLAYED = 1
+  NOT_PLAYED = 0
   AMOUNT = [10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000]
 
   def finish!
@@ -46,6 +48,10 @@ class Match < ApplicationRecord
     else
       DRAW
     end
+  end
+
+  def include_team?(team_id)
+    host_team_id == team_id || visit_team_id == team_id
   end
 
   def host_feats

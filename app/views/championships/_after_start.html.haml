@@ -2,35 +2,43 @@
   .row.row-header
     .col-xs-1
       Position
-    .col-xs-3
+    .col-xs-4
       Team Name
-    .col-xs-2
+    .col-xs-1
       Points
-    .col-xs-2
+    .col-xs-1
       Played
     .col-xs-1
       TD
-    .col-xs-2
+    .col-xs-1
       Casualities
     .col-xs-1
       Comp
+    .col-xs-1
+      Injuries
+    .col-xs-1
+      Inter
 
   - @clasification.each_with_index do |team, index|
     .row.row-main
       .col-xs-1
         = index + 1
-      .col-xs-3
+      .col-xs-4
         = link_to team.name, team_path(team)
-      .col-xs-2
-        = team.calculate_points(@championship)
-      .col-xs-2
-        -
       .col-xs-1
-        = team.calculate_touchdonws(@championship)
-      .col-xs-2
-        -
+        = @championship.calculate_points_by(team)
       .col-xs-1
-        -
+        = @championship.matches_played_by(team)
+      .col-xs-1
+        = @championship.calculate_of('touchdown', team)
+      .col-xs-1
+        = @championship.calculate_of('casualty', team)
+      .col-xs-1
+        = @championship.calculate_of('complention', team)
+      .col-xs-1
+        = @championship.calculate_of('injury', team)
+      .col-xs-1
+        = @championship.calculate_of('interception', team)
 
 %br
 %section

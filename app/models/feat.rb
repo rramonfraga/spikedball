@@ -82,8 +82,16 @@ class Feat < ApplicationRecord
     kind.include? 'injury'
   end
 
+  def casualty?
+    kind.include? 'casualty'
+  end
+
   def host_team?
     player.team_id == match.host_team_id
+  end
+
+  def owner_team?(team_id)
+    player.team_id == team_id
   end
 
   def assign_experience!
