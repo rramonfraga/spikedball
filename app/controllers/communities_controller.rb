@@ -15,11 +15,22 @@ class CommunitiesController < ApplicationController
 
   def create
     @community = Community.new community_params
-    unless @community.save
-      render(:new)
-    else
+    if @community.save
       current_user.communities << @community
+      WelcomeCommunityMailer.welcome_community(current_user, @community).deliver_now
       redirect_to action: 'index', controller: 'welcome', community_code: @community.code
+    else
+      render(:new)
+    end
+  end
+
+  def assign
+    @community = Community.find_by(id: params[:code])
+    @user = User.find_by(id: params[:user_id])
+    if @community = Community.find_by(id: params[:code])
+      @community.users << @user
+    else
+      render status: 404, file: '/public/404.html'
     end
   end
 

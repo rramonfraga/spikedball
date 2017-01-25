@@ -38,6 +38,8 @@ gem "haml-rails", "~> 0.9"
 # Use Serializers
 gem 'active_model_serializers'
 
+gem 'figaro'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

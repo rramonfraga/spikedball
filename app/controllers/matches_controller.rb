@@ -26,11 +26,18 @@ class MatchesController < ApplicationController
   def finish
     @match = Match.find_by(id: params[:id])
     if @match.update_attributes(match_params)
-      @match.finish!
+      @user = @match.give_me(current_user)
+      ValidateMatcheMailer.validate_match(@user, @community).deliver_now
       redirect_to action: 'show', controller: 'championships', community_code: current_community.code, id: params['championship_id']
     else
       redirect_to action: 'new', controller: 'feats', community_code: current_community.code, championship_id: params['championship_id'], match_id: params['match_id']
     end
+  end
+
+  def finished
+    @match = Match.find_by(id: params[:id])
+    @match.finish!
+    render 'finished'
   end
 
   private
