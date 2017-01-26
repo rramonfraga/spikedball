@@ -15,9 +15,7 @@ class Match < ApplicationRecord
     self.finish = true
     clean_injured_players!
     assign_things_from_feats!
-    assign_treasury!
-    assign_fan_factor!
-    recalculate_value!
+    assign_benefits_to_teams!
     save!
   end
 
@@ -69,19 +67,9 @@ class Match < ApplicationRecord
     end
   end
 
-  def assign_treasury!
-    host_team.add_treasury(host_team_treasury)
-    visit_team.add_treasury(visit_team_treasury)
-  end
-
-  def assign_fan_factor!
-    host_team.add_fan_factor(host_team_fan_factor, winner)
-    visit_team.add_fan_factor(visit_team_fan_factor, winner)
-  end
-
-  def recalculate_value!
-    host_team.set_value!
-    visit_team.set_value!
+  def assign_benefits_to_teams!
+    host_team.add_benefits(host_team_treasury, host_team_fan_factor, winner)
+    visit_team.add_benefits(visit_team_treasury, visit_team_fan_factor, winner)
   end
 
   def clean_injured_players!

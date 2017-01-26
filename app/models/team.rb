@@ -27,11 +27,11 @@ class Team < ApplicationRecord
   end
 
   def live_players
-    @live_players ||= players.select(&:live?)
+    players.where('dead = ?', false)
   end
 
   def players_by_game
-    live_players.sort_by { |player| player.player_template_id }
+    live_players.order('player_template_id ASC')
   end
 
   def joined?
@@ -42,19 +42,12 @@ class Team < ApplicationRecord
     championships.find{ |championship| !championship.finish? }
   end
 
-  def add_treasury(treasury)
+  def add_benefits(treasury, fans, winner)
     self.treasury += treasury
+    self.fan_factor += number_fan_factor(fans, winner)
     save
   end
 
-  def add_fan_factor(fans, winner)
-    if winner == self || winner == Match::DRAW
-      self.fan_factor += 1 if fans > fan_factor
-    elsif winner != self || winner == Match::DRAW
-      self.fan_factor -= 1 if fans < fan_factor
-    end
-    save
-  end
 
   def set_value!
     calculate_value
@@ -67,15 +60,9 @@ class Team < ApplicationRecord
   end
 
   def hired_collection
-    @hired_collection = []
-    team.players.each do |pt|
-      if group_by_title[pt.title].present?
-        @hired_collection << pt if group_by_title[pt.title].count < pt.quantity
-      else
-        @hired_collection << pt
-      end
-    end
-    @hired_collection
+    team.players.map do |pt|
+      pt if group_by_title[pt.title].blank? || hireable?(pt)
+    end.compact
   end
 
   def buy_re_roll?
@@ -106,13 +93,26 @@ class Team < ApplicationRecord
 
   private
 
+  def number_fan_factor(fans, winner)
+    if winner == self || winner == Match::DRAW
+      1 if fans > fan_factor
+    elsif winner != self || winner == Match::DRAW
+      -1 if fans < fan_factor
+    end.to_i
+  end
+
   def group_by_title
     @group_by_title ||= live_players.group_by(&:title)
   end
 
+  def hireable?(player)
+    group_by_title[player.title].count < player.quantity &&
+      player.cost <= treasury
+  end
+
   def value_of_players
-    live_players.reduce(0) do |val, p|
-      p.miss_next_game? ? val : val + p.cost
+    live_players.reduce(0) do |sum, player|
+      player.miss_next_game? ? sum : sum + player.cost
     end
   end
 
