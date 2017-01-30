@@ -1,5 +1,5 @@
 .row.row-main.row-main-create.js-player
-  .col-sm-5
+  .col-sm-4
     .row
       .field.col-sm-1.number
         = index
@@ -12,7 +12,7 @@
           = player.name
       .field.col-sm-5.player
         = player.title
-  .col-sm-7
+  .col-sm-8
     .row
       .field.col-sm-1.ma
         = player.ma
@@ -29,7 +29,9 @@
           %a.js-skill{ data: { skill: { id: skill.id }}}
             = skill.name
           ,
-      .field.col-sm-2.experience
+      .field.col-sm-1.niggling_injury
+        = player.niggling_injury
+      .field.col-sm-1.experience
         = player.experience
         - if player.level_up? && current_user.can_level_up?(player, current_community)
           %a#level-up{ href: edit_player_path(id: player.id) }

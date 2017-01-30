@@ -1,5 +1,5 @@
 .row.row-main.row-main-create.js-player
-  .col-sm-5
+  .col-sm-4
     .row
       %strike.field.col-sm-1.number
         = index
@@ -10,7 +10,7 @@
         = player.name
       %strike.field.col-sm-5.player
         = player.title
-  .col-sm-7
+  .col-sm-8
     .row
       %strike.field.col-sm-1.ma
         = player.ma
@@ -27,7 +27,9 @@
           %a.js-skill{ data: { skill: { id: skill.id }}}
             = skill.name
           ,
-      %strike.field.col-sm-2.experience
+      %strike.field.col-sm-1.niggling_injury
+        = player.niggling_injury
+      %strike.field.col-sm-1.experience
         = player.experience
         - if player.level_up?
           %a#level-up{ href: '/'}
