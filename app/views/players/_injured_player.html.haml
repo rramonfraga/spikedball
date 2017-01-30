@@ -1,35 +1,37 @@
 .row.row-main.row-main-create.js-player
   .col-sm-4
     .row
-      %strike.field.col-sm-1.number
+      %strike.field.col-xs-2.col-sm-1.number
         = index
-      %strike.field.col-sm-2
+      %strike.field.col-xs-3.col-sm-2
         = player.dorsal
-      %strike.field.col-sm-4.name
+      %strike.field.col-xs-3.col-sm-4.name
         = image_tag asset_path('injury.jpg'), width: 20
         = player.name
-      %strike.field.col-sm-5.player
+      %strike.field.col-xs-3.col-sm-5.player
         = player.title
-  .col-sm-8
+  .col-sm-4
     .row
-      %strike.field.col-sm-1.ma
+      %strike.field.col-xs-2.col-sm-2.ma
         = player.ma
-      %strike.field.col-sm-1.st
+      %strike.field.col-xs-2.col-sm-2.st
         = player.st
-      %strike.field.col-sm-1.ag
+      %strike.field.col-xs-2.col-sm-2.ag
         = player.ag
-      %strike.field.col-sm-1.av
+      %strike.field.col-xs-2.col-sm-2.av
         = player.av
-      %strike.field.col-sm-2.cost
+      %strike.field.col-xs-2.col-sm-4.cost
         = player.cost
-      %strike.field.col-sm-4.skill
+  .col-sm-4
+    .row
+      %strike.field.col-xs-6.col-sm-8.skill
         - player.skill_templates.each do |skill|
           %a.js-skill{ data: { skill: { id: skill.id }}}
             = skill.name
           ,
-      %strike.field.col-sm-1.niggling_injury
+      %strike.field.col-xs-2.col-sm-2.niggling_injury
         = player.niggling_injury
-      %strike.field.col-sm-1.experience
+      %strike.field.col-xs-2.col-sm-2.experience
         = player.experience
         - if player.level_up?
           %a#level-up{ href: '/'}
