@@ -35,6 +35,24 @@ def create_player_templates
   end
 end
 
+def create_start_players
+  start_file = IO.read('lib/assets/starts.json')
+  starts = JSON.parse(start_file)
+  starts.each do |start|
+    sp = StartPlayer.create name: start["name"], cost: start["cost"], ma: start["ma"], st: start["st"],
+                            ag: start["ag"], av: start["av"], feeder: start["feeder"]
+    start["skills"].each do |skill|
+      s = SkillTemplate.find_by(name: skill)
+      sp.skill_templates << s
+    end
+
+    start["teams"].each do |team|
+      t = TeamTemplate.find_by(name: team)
+      sp.team_templates << t
+    end
+  end
+end
+
 def create_communities
   Community.create(name: 'Communities', code: 'communities')
   Community.create(name: 'Generación X', code: 'generacion-x')

@@ -1,0 +1,1182 @@
+[
+  {
+    "name": "Barik Farblast",
+    "cost": "60000",
+    "ma": "6",
+    "st": "3",
+    "ag": "3",
+    "av": "8",
+    "skills": [
+        "Loner",
+        "Hail Mary Pass",
+        "Pass",
+        "Secret Weapon",
+        "Strong Arm",
+        "Sure Hands",
+        "Thick Skull"
+      ],
+    "feeder": "false",
+    "teams": [ "Dwarf" ]
+  },
+  {
+    "name": "Bertha Bigfist",
+    "cost": "290000",
+    "ma": "6",
+    "st": "5",
+    "ag": "2",
+    "av": "9",
+    "skills": [
+        "Loner",
+        "Bone-head",
+        "Break Tackle",
+        "Dodge",
+        "Mighty Blow",
+        "Thick Skull",
+        "Throw Team-Mate"
+      ],
+    "feeder": "false",
+    "teams": [
+        "Amazon",
+        "Halfling",
+        "Ogre"
+      ]
+  },
+  {
+    "name": "Brick Far’th",
+    "cost": "290000",
+    "ma": "5",
+    "st": "5",
+    "ag": "2",
+    "av": "9",
+    "skills": [
+        "Loner",
+        "Bone-head",
+        "Mighty Blow",
+        "Nerves of Steel",
+        "Strong Arm",
+        "Thick Skull",
+        "Throw Team-Mate"
+      ],
+    "feeder": "false",
+    "teams": [
+        "Chaos",
+        "Nurgle",
+        "Ogre"
+      ]
+  },
+  {
+    "name": "Grotty",
+    "cost": "0",
+    "ma": "6",
+    "st": "2",
+    "ag": "4",
+    "av": "7",
+    "skills": [
+        "Loner",
+        "Dodge",
+        "Right Stuff",
+        "Stunty"
+      ],
+    "feeder": "false",
+    "teams":  [
+        "Chaos",
+        "Nurgle",
+        "Ogre"
+      ]
+  },
+  {
+    "name": "Bomber Dribblesnot",
+    "cost": "60000",
+    "ma": "6",
+    "st": "2",
+    "ag": "3",
+    "av": "7",
+    "skills": [
+        "Loner",
+        "Accurate",
+        "Bombardier",
+        "Dodge",
+        "Right Stuff",
+        "Secret Weapon",
+        "Stunty"
+      ],
+    "feeder": "false",
+    "teams": [
+        "Chaos Pact",
+        "Goblin",
+        "Ogre",
+        "Orc",
+        "Underworld"
+      ]
+  },
+  {
+    "name": "Boomer Eziasson",
+    "cost": "60000",
+    "ma": "4",
+    "st": "3",
+    "ag": "2",
+    "av": "9",
+    "skills": [
+        "Loner",
+        "Accurate",
+        "Block",
+        "Bombardier",
+        "Secret Weapon",
+        "Thick Skull"
+      ],
+    "feeder": "false",
+    "teams": [
+        "Dwarf",
+        "Norse"
+      ]
+  },
+  {
+    "name": "Count Luthor Von Drakenborg",
+    "cost": "390000",
+    "ma": "6",
+    "st": "5",
+    "ag": "4",
+    "av": "9",
+    "skills": [
+        "Loner",
+        "Block",
+        "Hypnotic Gaze",
+        "Regeneration",
+        "Side Step"
+      ],
+    "feeder": "false",
+    "teams": [
+        "Necromantic",
+        "Undead",
+        "Vampire"
+      ]
+  },
+  {
+    "name": "Crazy Igor",
+    "cost": "120000",
+    "ma": "6",
+    "st": "3",
+    "ag": "3",
+    "av": "8",
+    "skills": [
+        "Loner",
+        "Dauntless",
+        "Regeneration",
+        "Thick Skull"
+      ],
+    "feeder": "true",
+    "teams": [
+        "Chaos Pact",
+        "Vampire"
+      ]
+  },
+  {
+    "name": "Deeproot Strongbranch",
+    "cost": "300000",
+    "ma": "2",
+    "st": "7",
+    "ag": "1",
+    "av": "10",
+    "skills": [
+        "Loner",
+        "Block",
+        "Mighty Blow",
+        "Stand Firm",
+        "Strong Arm",
+        "Thick Skull",
+        "Throw Team-Mate"
+      ],
+    "feeder": "false",
+    "teams": [ "Halfling" ]
+  },
+  {
+    "name": "Dolfar Longstride",
+    "cost": "150000",
+    "ma": "7",
+    "st": "3",
+    "ag": "4",
+    "av": "7",
+    "skills": [
+        "Loner",
+        "Diving Catch",
+        "Hail Mary Pass",
+        "Kick",
+        "Kick-Off Return",
+        "Pass Block"
+      ],
+    "feeder": "false",
+    "teams": [
+        "Elf",
+        "High Elf",
+        "Wood Elf"
+      ]
+  },
+  {
+    "name": "Eldril Sidewinder",
+    "cost": "200000",
+    "ma": "8",
+    "st": "3",
+    "ag": "4",
+    "av": "7",
+    "skills": [
+        "Loner",
+        "Catch",
+        "Dodge",
+        "Hypnotic Gaze",
+        "Nerves of Steel",
+        "Pass Block"
+      ],
+    "feeder": "false",
+    "teams": [
+        "Dark Elf",
+        "Elf",
+        "High Elf",
+        "Wood Elf"
+      ]
+  },
+  {
+    "name": "Fezglitch",
+    "cost": "100000",
+    "ma": "4",
+    "st": "7",
+    "ag": "3",
+    "av": "7",
+    "skills": [
+        "Loner",
+        "Ball & Chain",
+        "Disturbing Presence",
+        "Foul Appearance",
+        "No Hands",
+        "Secret Weapon"
+      ],
+    "feeder": "false",
+    "teams": [
+        "Skaven",
+        "Underworld"
+      ]
+  },
+  {
+    "name": "Flint Churnblade",
+    "cost": "130000",
+    "ma": "5",
+    "st": "3",
+    "ag": "2",
+    "av": "8",
+    "skills": [
+        "Loner",
+        "Block",
+        "Chainsaw",
+        "Secret Weapon",
+        "Thick Skull"
+      ],
+    "feeder": "false",
+    "teams": [ "Dwarf" ]
+  },
+  {
+    "name": "Fungus the Loon",
+    "cost": "80000",
+    "ma": "4",
+    "st": "7",
+    "ag": "3",
+    "av": "7",
+    "skills": [
+        "Loner",
+        "Ball & Chain",
+        "Mighty Blow",
+        "No Hands",
+        "Secret Weapon",
+        "Stunty"
+      ],
+    "feeder": "false",
+    "teams": [ "Goblin" ]
+  },
+  {
+    "name": "Glart Smashrip Jr.",
+    "cost": "210000",
+    "ma": "7",
+    "st": "4",
+    "ag": "3",
+    "av": "8",
+    "skills": [
+        "Loner",
+        "Block",
+        "Claws",
+        "Juggernaut"
+      ],
+    "feeder": "false",
+    "teams": [
+        "Skaven",
+        "Underworld"
+      ]
+  },
+  {
+    "name": "Grashnak Blackhoof",
+    "cost": "310000",
+    "ma": "6",
+    "st": "6",
+    "ag": "2",
+    "av": "8",
+    "skills": [
+        "Loner",
+        "Frenzy",
+        "Horns",
+        "Mighty Blow",
+        "Thick Skull"
+      ],
+    "feeder": "false",
+    "teams": [
+        "Chaos",
+        "Chaos Dwarf",
+        "Nurgle"
+      ]
+  },
+  {
+    "name": "Griff Oberwald",
+    "cost": "320000",
+    "ma": "7",
+    "st": "4",
+    "ag": "4",
+    "av": "8",
+    "skills": [
+        "Loner",
+        "Block",
+        "Dodge",
+        "Fend",
+        "Sprint",
+        "Sure Feet"
+      ],
+    "feeder": "false",
+    "teams": [ "Human" ]
+  },
+  {
+    "name": "Grim Ironjaw",
+    "cost": "220000",
+    "ma": "5",
+    "st": "4",
+    "ag": "3",
+    "av": "8",
+    "skills": [
+        "Loner",
+        "Block",
+        "Dauntless",
+        "Frenzy",
+        "Multiple Block",
+        "Thick Skull"
+      ],
+    "feeder": "false",
+    "teams": [ "Dwarf" ]
+  },
+  {
+    "name": "Hack Enslash",
+    "cost": "120000",
+    "ma": "6",
+    "st": "3",
+    "ag": "2",
+    "av": "7",
+    "skills": [
+        "Loner",
+        "Chainsaw",
+        "Regeneration",
+        "Secret Weapon",
+        "Side Step"
+      ],
+    "feeder": "false",
+    "teams": [
+        "Khemri",
+        "Necromantic",
+        "Undead"
+      ]
+  },
+  {
+    "name": "Hakflem Skuttlespike",
+    "cost": "200000",
+    "ma": "9",
+    "st": "3",
+    "ag": "4",
+    "av": "7",
+    "skills": [
+        "Loner",
+        "Dodge",
+        "Extra Arms",
+        "Prehensile Tail",
+        "Two Heads"
+      ],
+    "feeder": "false",
+    "teams": [ "Skaven" ]
+  },
+  {
+    "name": "Headsplitter",
+    "cost": "340000",
+    "ma": "6",
+    "st": "6",
+    "ag": "3",
+    "av": "8",
+    "skills": [
+        "Loner",
+        "Frenzy",
+        "Mighty Blow",
+        "Prehensile Tail"
+      ],
+    "feeder": "false",
+    "teams": [ "Skaven" ]
+  },
+  {
+    "name": "Helmut Wulf",
+    "cost": "110000",
+    "ma": "6",
+    "st": "3",
+    "ag": "3",
+    "av": "8",
+    "skills": [
+        "Loner",
+        "Chainsaw",
+        "Secret Weapon",
+        "Stand Firm"
+      ],
+    "feeder": "false",
+    "teams": [
+        "Amazon",
+        "Human",
+        "Lizardman",
+        "Norse",
+        "Slann",
+        "Vampire"
+      ]
+  },
+  {
+    "name": "Hemlock",
+    "cost": "170000",
+    "ma": "8",
+    "st": "2",
+    "ag": "3",
+    "av": "7",
+    "skills": [
+        "Loner",
+        "Block",
+        "Dodge",
+        "Side Step",
+        "Jump Up",
+        "Stab",
+        "Stunty"
+      ],
+    "feeder": "false",
+    "teams": [
+        "Lizardman",
+        "Slann"
+      ]
+  },
+  {
+    "name": "Horkon Heartripper",
+    "cost": "210000",
+    "ma": "7",
+    "st": "3",
+    "ag": "4",
+    "av": "7",
+    "skills": [
+        "Loner",
+        "Dodge",
+        "Leap",
+        "Multiple Block",
+        "Shadowing",
+        "Stab"
+      ],
+    "feeder": "false",
+    "teams": [ "Dark Elf" ]
+  },
+  {
+    "name": "Hthark the Unstoppable",
+    "cost": "330000",
+    "ma": "6",
+    "st": "5",
+    "ag": "2",
+    "av": "9",
+    "skills": [
+        "Loner",
+        "Block",
+        "Break Tackle",
+        "Juggernaut",
+        "Sprint",
+        "Sure Feet",
+        "Thick Skull"
+      ],
+    "feeder": "false",
+    "teams": [ "Chaos Dwarf" ]
+  },
+  {
+    "name": "Hubris Rakarth",
+    "cost": "260000",
+    "ma": "7",
+    "st": "4",
+    "ag": "4",
+    "av": "8",
+    "skills": [
+        "Loner",
+        "Block",
+        "Dirty Player",
+        "Jump Up",
+        "Mighty Blow",
+        "Strip Ball"
+      ],
+    "feeder": "false",
+    "teams": [
+        "Dark Elf",
+        "Elf"
+      ]
+  },
+  {
+    "name": "Humerus Carpal",
+    "cost": "130000",
+    "ma": "7",
+    "st": "2",
+    "ag": "3",
+    "av": "7",
+    "skills": [
+        "Loner",
+        "Catch",
+        "Dodge",
+        "Nerves of Steel",
+        "Regeneration"
+      ],
+    "feeder": "false",
+    "teams": [ "Khemri" ]
+  },
+  {
+    "name": "Icepelt Hammerblow",
+    "cost": "330000",
+    "ma": "5",
+    "st": "6",
+    "ag": "1",
+    "av": "8",
+    "skills": [
+        "Loner",
+        "Claws",
+        "Disturbing Presence",
+        "Frenzy",
+        "Regeneration",
+        "Thick Skull"
+      ],
+    "feeder": "false",
+    "teams": [ "Norse" ]
+  },
+  {
+    "name": "Ithaca Benoin",
+    "cost": "220000",
+    "ma": "7",
+    "st": "3",
+    "ag": "3",
+    "av": "7",
+    "skills": [
+        "Loner",
+        "Accurate",
+        "Dump-Off",
+        "Nerves of Steel",
+        "Pass",
+        "Regeneration",
+        "Sure Hands"
+      ],
+    "feeder": "false",
+    "teams": [
+        "Dark Elf",
+        "Khemri"
+      ]
+  },
+  {
+    "name": "J Earlice",
+    "cost": "180000",
+    "ma": "8",
+    "st": "3",
+    "ag": "3",
+    "av": "7",
+    "skills": [
+        "Loner",
+        "Catch",
+        "Diving Catch",
+        "Dodge",
+        "Sprint"
+      ],
+    "feeder": "false",
+    "teams": [
+        "Necromantic",
+        "Undead",
+        "Vampire"
+      ]
+  },
+  {
+    "name": "Jordell Freshbreeze",
+    "cost": "260000",
+    "ma": "8",
+    "st": "3",
+    "ag": "5",
+    "av": "7",
+    "skills": [
+        "Loner",
+        "Block",
+        "Diving Catch",
+        "Dodge",
+        "Leap",
+        "Side Step"
+      ],
+    "feeder": "false",
+    "teams": [
+        "Wood Elf",
+        "Elf"
+      ]
+  },
+  {
+    "name": "Lewdgrip Whiparm",
+    "cost": "150000",
+    "ma": "6",
+    "st": "3",
+    "ag": "3",
+    "av": "9",
+    "skills": [
+        "Loner",
+        "Pass",
+        "Strong Arm",
+        "Sure Hands",
+        "Tentacles"
+      ],
+    "feeder": "false",
+    "teams": [
+        "Chaos",
+        "Chaos Pact",
+        "Nurgle"
+      ]
+  },
+  {
+    "name": "Lord Borak the Despoiler",
+    "cost": "300000",
+    "ma": "5",
+    "st": "5",
+    "ag": "3",
+    "av": "9",
+    "skills": [
+        "Loner",
+        "Block",
+        "Dirty Player",
+        "Mighty Blow"
+      ],
+    "feeder": "false",
+    "teams": [
+        "Chaos",
+        "Nurgle"
+      ]
+  },
+  {
+    "name": "Lottabottol",
+    "cost": "220000",
+    "ma": "8",
+    "st": "3",
+    "ag": "3",
+    "av": "8",
+    "skills": [
+        "Loner",
+        "Catch",
+        "Diving Tackle",
+        "Jump Up",
+        "Leap",
+        "Pass Block",
+        "Shadowing",
+        "Very Long Legs"
+      ],
+    "feeder": "false",
+    "teams": [
+        "Lizardman",
+        "Slann"
+      ]
+  },
+  {
+    "name": "Max Spleenripper",
+    "cost": "130000",
+    "ma": "5",
+    "st": "4",
+    "ag": "3",
+    "av": "8",
+    "skills": [
+        "Loner",
+        "Chainsaw",
+        "Secret Weapon"
+      ],
+    "feeder": "false",
+    "teams": [
+        "Chaos",
+        "Nurgle"
+      ]
+  },
+  {
+    "name": "Mighty Zug",
+    "cost": "260000",
+    "ma": "4",
+    "st": "5",
+    "ag": "2",
+    "av": "9",
+    "skills": [
+        "Loner",
+        "Block",
+        "Mighty Blow"
+      ],
+    "feeder": "false",
+    "teams": [ "Human" ]
+  },
+  {
+    "name": "Morg ‘n’ Thorg",
+    "cost": "430000",
+    "ma": "6",
+    "st": "6",
+    "ag": "3",
+    "av": "10",
+    "skills": [
+        "Loner",
+        "Block",
+        "Mighty Blow",
+        "Thick Skull",
+        "Throw Team-Mate"
+      ],
+    "feeder": "false",
+    "teams": [
+        "Amazon",
+        "Chaos",
+        "Chaos Dwarf",
+        "Chaos Pact",
+        "Dark Elf",
+        "Dwarf",
+        "Elf",
+        "Goblin",
+        "Halfling",
+        "High Elf",
+        "Human",
+        "Lizardman",
+        "Norse",
+        "Nurgle",
+        "Ogre",
+        "Orc",
+        "Skaven",
+        "Slann",
+        "Underworld",
+        "Vampire",
+        "Wood Elf"
+      ]
+  },
+  {
+    "name": "Nobbla Blackwart",
+    "cost": "130000",
+    "ma": "6",
+    "st": "2",
+    "ag": "3",
+    "av": "7",
+    "skills": [
+        "Loner",
+        "Block",
+        "Dodge",
+        "Chainsaw",
+        "Secret Weapon",
+        "Stunty"
+      ],
+    "feeder": "false",
+    "teams": [
+        "Chaos Dwarf",
+        "Goblin",
+        "Ogre",
+        "Underworld"
+      ]
+  },
+  {
+    "name": "Prince Moranion",
+    "cost": "230000",
+    "ma": "7",
+    "st": "4",
+    "ag": "4",
+    "av": "8",
+    "skills": [
+        "Loner",
+        "Block",
+        "Dauntless",
+        "Tackle",
+        "Wrestle"
+      ],
+    "feeder": "false",
+    "teams": [
+        "Elf",
+        "High Elf"
+      ]
+  },
+  {
+    "name": "Puggy Baconbreath",
+    "cost": "140000",
+    "ma": "5",
+    "st": "3",
+    "ag": "3",
+    "av": "6",
+    "skills": [
+        "Loner",
+        "Block",
+        "Dodge",
+        "Nerves of Steel",
+        "Right Stuff",
+        "Stunty"
+      ],
+    "feeder": "false",
+    "teams": [
+        "Halfling",
+        "Human"
+      ]
+  },
+  {
+    "name": "Quetzal Leap",
+    "cost": "250000",
+    "ma": "8",
+    "st": "2",
+    "ag": "4",
+    "av": "7",
+    "skills": [
+        "Loner",
+        "Catch",
+        "Diving Catch",
+        "Fend",
+        "Kick-Off Return",
+        "Leap",
+        "Nerves of Steel",
+        "Very Long Legs"
+      ],
+    "feeder": "false",
+    "teams": [
+        "Lizardman",
+        "Slann"
+      ]
+  },
+  {
+    "name": "Ramtut III",
+    "cost": "380000",
+    "ma": "5",
+    "st": "6",
+    "ag": "1",
+    "av": "9",
+    "skills": [
+        "Loner",
+        "Break Tackle",
+        "Mighty Blow",
+        "Regeneration",
+        "Wrestle"
+      ],
+    "feeder": "false",
+    "teams": [
+        "Khemri",
+        "Necromantic",
+        "Undead"
+      ]
+  },
+  {
+    "name": "Rashnak Backstabber",
+    "cost": "200000",
+    "ma": "7",
+    "st": "3",
+    "ag": "3",
+    "av": "7",
+    "skills": [
+        "Loner",
+        "Dodge",
+        "Side Step",
+        "Sneaky Git",
+        "Stab"
+      ],
+    "feeder": "false",
+    "teams": [ "Chaos Dwarf" ]
+  },
+  {
+    "name": "Ripper",
+    "cost": "270000",
+    "ma": "4",
+    "st": "6",
+    "ag": "1",
+    "av": "9",
+    "skills": [
+        "Loner",
+        "Grab",
+        "Mighty Blow",
+        "Regeneration",
+        "Throw Team-Mate"
+      ],
+    "feeder": "false",
+    "teams": [
+        "Goblin",
+        "Orc"
+      ]
+  },
+  {
+    "name": "Roxanna Darknail",
+    "cost": "250000",
+    "ma": "8",
+    "st": "3",
+    "ag": "5",
+    "av": "7",
+    "skills": [
+        "Loner",
+        "Dodge",
+        "Frenzy",
+        "Jump Up",
+        "Juggernaut",
+        "Leap"
+      ],
+    "feeder": "false",
+    "teams": [
+        "Amazon",
+        "Dark Elf"
+      ]
+  },
+  {
+    "name": "Scrappa Sorehead",
+    "cost": "150000",
+    "ma": "7",
+    "st": "2",
+    "ag": "3",
+    "av": "7",
+    "skills": [
+        "Loner",
+        "Dirty Player",
+        "Dodge",
+        "Leap",
+        "Right Stuff",
+        "Sprint",
+        "Stunty",
+        "Sure Feet",
+        "Very Long Legs"
+      ],
+    "feeder": "false",
+    "teams": [
+        "Goblin",
+        "Ogre",
+        "Orc"
+      ]
+  },
+  {
+    "name": "Setekh",
+    "cost": "220000",
+    "ma": "6",
+    "st": "4",
+    "ag": "2",
+    "av": "8",
+    "skills": [
+        "Loner",
+        "Block",
+        "Break Tackle",
+        "Juggernaut",
+        "Regeneration",
+        "Strip Ball"
+      ],
+    "feeder": "false",
+    "teams": [
+        "Khemri",
+        "Necromantic",
+        "Undead"
+      ]
+  },
+  {
+    "name": "Slibli",
+    "cost": "250000",
+    "ma": "7",
+    "st": "4",
+    "ag": "1",
+    "av": "9",
+    "skills": [
+        "Loner",
+        "Block",
+        "Grab",
+        "Guard",
+        "Stand Firm"
+      ],
+    "feeder": "false",
+    "teams": [
+        "Lizardman",
+        "Slann"
+      ]
+  },
+  {
+    "name": "Sinnedbad",
+    "cost": "80000",
+    "ma": "6",
+    "st": "3",
+    "ag": "2",
+    "av": "7",
+    "skills": [
+        "Loner",
+        "Block",
+        "Jump Up",
+        "Pass Block",
+        "Regeneration",
+        "Secret Weapon",
+        "Side Step",
+        "Stab"
+      ],
+    "feeder": "false",
+    "teams": [
+        "Khemri",
+        "Undead"
+      ]
+  },
+  {
+    "name": "Skitter Stab-Stab",
+    "cost": "160000",
+    "ma": "9",
+    "st": "2",
+    "ag": "4",
+    "av": "7",
+    "skills": [
+        "Loner",
+        "Dodge",
+        "Prehensile Tail",
+        "Shadowing",
+        "Stab"
+      ],
+    "feeder": "false",
+    "teams": [
+        "Skaven",
+        "Underworld"
+      ]
+  },
+  {
+    "name": "Soaren Hightower",
+    "cost": "180000",
+    "ma": "6",
+    "st": "3",
+    "ag": "4",
+    "av": "8",
+    "skills": [
+        "Loner",
+        "Fend",
+        "Kick-Off Return",
+        "Pass",
+        "Safe Throw",
+        "Sure Hands",
+        "Strong Arm"
+      ],
+    "feeder": "false",
+    "teams": [ "High Elf" ]
+  },
+  {
+    "name": "Ugroth Bolgrot",
+    "cost": "100000",
+    "ma": "5",
+    "st": "3",
+    "ag": "3",
+    "av": "9",
+    "skills": [
+        "Loner",
+        "Chainsaw",
+        "Secret Weapon"
+      ],
+    "feeder": "false",
+    "teams": [
+        "Chaos Pact",
+        "Orc"
+      ]
+  },
+  {
+    "name": "Varag Ghoul-Chewer",
+    "cost": "290000",
+    "ma": "6",
+    "st": "4",
+    "ag": "3",
+    "av": "9",
+    "skills": [
+        "Loner",
+        "Block",
+        "Jump Up",
+        "Mighty Blow",
+        "Thick Skull"
+      ],
+    "feeder": "false",
+    "teams": [ "Orc" ]
+  },
+  {
+    "name": "Wilhelm Chaney",
+    "cost": "240000",
+    "ma": "8",
+    "st": "4",
+    "ag": "3",
+    "av": "8",
+    "skills": [
+        "Loner",
+        "Catch",
+        "Claws",
+        "Frenzy",
+        "Regeneration",
+        "Wrestle"
+      ],
+    "feeder": "false",
+    "teams": [
+        "Necromantic",
+        "Norse",
+        "Vampire"
+      ]
+  },
+  {
+    "name": "Willow Rosebark",
+    "cost": "150000",
+    "ma": "5",
+    "st": "4",
+    "ag": "3",
+    "av": "8",
+    "skills": [
+        "Loner",
+        "Dauntless",
+        "Side Step",
+        "Thick Skull"
+      ],
+    "feeder": "false",
+    "teams": [
+        "Amazon",
+        "Halfling",
+        "Wood Elf"
+      ]
+  },
+  {
+    "name": "Zara the Slayer",
+    "cost": "270000",
+    "ma": "6",
+    "st": "4",
+    "ag": "3",
+    "av": "8",
+    "skills": [
+        "Loner",
+        "Block",
+        "Dauntless",
+        "Dodge",
+        "Jump Up",
+        "Stab",
+        "Stakes"
+      ],
+    "feeder": "false",
+    "teams": [
+        "Amazon",
+        "Dwarf",
+        "Halfling",
+        "High Elf",
+        "Human",
+        "Norse",
+        "Wood Elf"
+      ]
+  },
+  {
+    "name": "Zzharg Madeye",
+    "cost": "90000",
+    "ma": "4",
+    "st": "4",
+    "ag": "3",
+    "av": "9",
+    "skills": [
+        "Loner",
+        "Hail Mary Pass",
+        "Pass",
+        "Secret Weapon",
+        "Strong Arm",
+        "Sure Hands",
+        "Tackle",
+        "Thick Skull"
+      ],
+    "feeder": "false",
+    "teams": [
+        "Chaos Dwarf",
+        "Chaos Pact"
+      ]
+  }
+]

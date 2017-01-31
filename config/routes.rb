@@ -38,6 +38,7 @@ Rails.application.routes.draw do
     scope :templates do
       resources :team_templates, path: '/teams', only: [:index, :show]
       resources :player_templates, path: '/players', only: [:index, :show]
+      resources :start_players, path: '/start_players', only: [:index, :show]
       resources :skill_templates, path: '/skills', only: [:index, :show]
     end
   end

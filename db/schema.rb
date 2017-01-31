@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161101182543) do
+ActiveRecord::Schema.define(version: 20170131194914) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -151,6 +151,36 @@ ActiveRecord::Schema.define(version: 20161101182543) do
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "start_player_skills", force: :cascade do |t|
+    t.integer  "start_player_id"
+    t.integer  "skill_template_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.index ["skill_template_id"], name: "index_start_player_skills_on_skill_template_id", using: :btree
+    t.index ["start_player_id"], name: "index_start_player_skills_on_start_player_id", using: :btree
+  end
+
+  create_table "start_player_teams", force: :cascade do |t|
+    t.integer  "start_player_id"
+    t.integer  "team_template_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["start_player_id"], name: "index_start_player_teams_on_start_player_id", using: :btree
+    t.index ["team_template_id"], name: "index_start_player_teams_on_team_template_id", using: :btree
+  end
+
+  create_table "start_players", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "cost"
+    t.integer  "ma"
+    t.integer  "st"
+    t.integer  "ag"
+    t.integer  "av"
+    t.boolean  "feeder"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "team_championships", force: :cascade do |t|
