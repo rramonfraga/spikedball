@@ -38,6 +38,12 @@ class TeamsController < ApplicationController
     redirect_to action: 'show', controller: 'teams', id: @team.id
   end
 
+  def add_freelance
+    @team = Team.find_by(id: params[:id])
+    @team.add_freelance
+    redirect_to action: 'show', controller: 'teams', id: @team.id
+  end
+
   private
   def team_params
     params.require(:team).permit( :name,

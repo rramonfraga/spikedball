@@ -27,6 +27,7 @@ Rails.application.routes.draw do
       member do
         get 'add_re_roll'
         get 'add_apothecary'
+        get 'add_freelance'
       end
       resources :players, only: [:new, :create, :show, :edit, :update, :destroy] do
         member do

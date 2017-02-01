@@ -52,7 +52,6 @@ class Team < ApplicationRecord
     save
   end
 
-
   def set_value!
     calculate_value
     save
@@ -84,10 +83,24 @@ class Team < ApplicationRecord
     treasury >= APOTHECARIES && apothecaries.zero?
   end
 
+  def buy_freelance?
+    active_players.count < 11
+  end
+
   def add_apothecary
     return false unless buy_apothecary?
     self.treasury -= APOTHECARIES
     self.apothecaries += 1
+    save!
+  end
+
+  def add_freelance
+    return false unless buy_freelance?
+    number = rand(99)
+    player = players.create(name: "Freelance #{number}",
+                            dorsal: number,
+                            player_template_id: freelance_template_id)
+    player.skills << SkillTemplate.find_by(name: 'Loner')
     save!
   end
 
@@ -124,5 +137,9 @@ class Team < ApplicationRecord
       assistant_coaches * ASSISTANT_COACHES +
       cheerleaders * CHEERLEADERS +
       apothecaries * APOTHECARIES
+  end
+
+  def freelance_template_id
+    team.players.where("quantity > ?", 11).first.id
   end
 end

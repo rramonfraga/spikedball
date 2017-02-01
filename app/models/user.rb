@@ -24,6 +24,10 @@ class User < ApplicationRecord
     id == team.user_id
   end
 
+  def can_edit?(team, community)
+    owner_team?(team) || admin?(community)
+  end
+
   def can_level_up?(player, community)
     owner_team?(player.team) || admin?(community)
   end
