@@ -26,8 +26,12 @@ class Team < ApplicationRecord
     team_template
   end
 
+  def active_players
+    players.where('dead = ? and fire = ? and miss_next_game = ?', false, false, false)
+  end
+
   def live_players
-    players.where('dead = ?', false)
+    players.where('dead = ? and fire = ?', false, false)
   end
 
   def players_by_game
@@ -111,9 +115,7 @@ class Team < ApplicationRecord
   end
 
   def value_of_players
-    live_players.reduce(0) do |sum, player|
-      player.miss_next_game? ? sum : sum + player.cost
-    end
+    active_players.reduce(0) { |sum, player| sum + player.cost }
   end
 
   def value_of_assistans

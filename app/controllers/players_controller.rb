@@ -32,6 +32,12 @@ class PlayersController < ApplicationController
     go_to_team(@player.team_id)
   end
 
+  def fire
+    @player = Player.find_by(id: params[:player][:id])
+    @player.fire!
+    go_to_team(@player.team_id)
+  end
+
   private
   def player_params
     params.require(:player).permit(:dorsal, :name, :player_template_id, :ma, :st, :ag, :av, :cost, level_rises_attributes: [:id, :characteristic, :skill_id])

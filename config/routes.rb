@@ -29,6 +29,9 @@ Rails.application.routes.draw do
         get 'add_apothecary'
       end
       resources :players, only: [:new, :create, :show, :edit, :update, :destroy] do
+        member do
+          post 'fire'
+        end
         resources :level_rises, only: [:create, :edit, :update]
       end
     end

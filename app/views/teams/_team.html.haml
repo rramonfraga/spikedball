@@ -24,3 +24,16 @@
     .col-sm-4
       Apothecaries:
       = team.apothecaries
+%p
+%section
+  .row
+    - if current_user.can_fire?(@team.active_players.first, current_community)
+      = form_tag(fire_player_path, method: :post) do
+        .col-sm-1
+        .col-sm-3
+          FIRE A PLAYER:
+        .col-sm-4
+          = collection_select(:player, :id, @team.active_players, :id, :full_name, { include_blank: true }, { class: "form-control"} )
+        .col-sm-3
+          = submit_tag "FIRE!", data: { confirm: "FIRE A PLAYER! Are you sure?" }, class: "btn btn-lg btn-block btn-blood"
+        .col-sm-1

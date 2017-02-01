@@ -58,8 +58,10 @@ class Player < ApplicationRecord
     save!
   end
 
-  def miss_next_game?
-    miss_next_game
+  def fire!
+    self.fire = true
+    save!
+    team.save!
   end
 
   def clean_miss_next_game!

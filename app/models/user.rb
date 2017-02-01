@@ -27,4 +27,8 @@ class User < ApplicationRecord
   def can_level_up?(player, community)
     owner_team?(player.team) || admin?(community)
   end
+
+  def can_fire?(player, community)
+    owner_team?(player.team) || admin?(community)
+  end
 end
