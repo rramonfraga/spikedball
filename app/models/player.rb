@@ -103,8 +103,7 @@ class Player < ApplicationRecord
   end
 
   def hired
-    team.treasury -= cost
-    team.calculate_value
+    team.treasury -= cost unless name.include? "Freelance"
     team.save
   end
 
