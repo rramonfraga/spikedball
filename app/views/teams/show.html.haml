@@ -31,7 +31,7 @@
             .col-sm-3
               FIRE A PLAYER:
             .col-sm-4
-              = collection_select(:player, :id, @team.active_players, :id, :full_name, { include_blank: true }, { class: "form-control"} )
+              = collection_select(:player, :id, @team.live_players, :id, :full_name, { include_blank: true }, { class: "form-control"} )
             .col-sm-3
               = submit_tag "FIRE!", data: { confirm: "FIRE A PLAYER! Are you sure?" }, class: "btn btn-lg btn-block btn-blood"
             .col-sm-1
