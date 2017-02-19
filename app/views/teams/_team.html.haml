@@ -24,3 +24,6 @@
     .col-sm-4
       Apothecaries:
       = team.apothecaries
+    .col-sm-4
+      %a.btn.btn-blood{href: team_path(team.id, format: :pdf), target: :blank}
+        Download PDF

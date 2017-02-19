@@ -38,6 +38,10 @@ gem "haml-rails", "~> 0.9"
 # Use Serializers
 gem 'active_model_serializers'
 
+# Generate PDF with gem prawn
+gem 'prawn'
+gem 'prawn-table'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

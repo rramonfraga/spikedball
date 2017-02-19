@@ -7,8 +7,14 @@ class TeamsController < ApplicationController
 
   def show
     @team = Team.find_by(id: params[:id])
-    unless @team.present?
-      render status: 404, file: '/public/404.html'
+    respond_to do |format|
+      format.html do
+        render 'show'
+      end
+      format.pdf do
+        report = PdfDocument.new(@team)
+        send_data report.to_pdf, filename: report.filename, type: 'application/pdf'
+      end
     end
   end
 

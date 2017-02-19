@@ -40,6 +40,11 @@ class Player < ApplicationRecord
     "#{dorsal} - #{name}"
   end
 
+  def full_skills
+    string = skills.reduce("") {|a, s| a + s.name + ", " }
+    string.chop!.chop! if string.present?
+  end
+
   def actual_level
     case experience
     when 0..5 then "Rookie"
