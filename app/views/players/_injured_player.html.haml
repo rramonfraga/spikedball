@@ -6,7 +6,7 @@
       %strike.field.col-xs-3.col-sm-2
         = player.dorsal
       %strike.field.col-xs-3.col-sm-4.name
-        = image_tag asset_path('injury.jpg'), width: 20
+        = image_tag asset_path('injury.png'), width: 20
         = player.name
       %strike.field.col-xs-3.col-sm-5.player
         = player.title
@@ -30,9 +30,14 @@
             = skill.name
           ,
       %strike.field.col-xs-2.col-sm-2.niggling_injury
-        = player.niggling_injury
+        - if player.niggling_injury == 1
+          = image_tag asset_path('niggly_injury.png'), width: 20
+        - else !player.niggling_injury.zero?
+          = image_tag asset_path('niggly_injury.png'), width: 20
+          = "x#{player.niggling_injury}"
       %strike.field.col-xs-2.col-sm-2.experience
-        = player.experience
-        - if player.level_up?
-          %a#level-up{ href: '/'}
-            = image_tag asset_path('level_up.png')
+        - if !player.experience.zero?
+          = player.experience
+          - if player.level_up?
+            %a#level-up{ href: '/'}
+              = image_tag asset_path('level_up.png')

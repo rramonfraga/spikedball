@@ -32,12 +32,17 @@
             = skill.name
           ,
       .field.col-xs-2.col-sm-2.niggling_injury
-        = player.niggling_injury
+        - if player.niggling_injury == 1
+          = image_tag asset_path('niggly_injury.png'), width: 20
+        - elsif !player.niggling_injury.zero?
+          = image_tag asset_path('niggly_injury.png'), width: 20
+          = "x#{player.niggling_injury}"
       .field.col-xs-2.col-sm-2.experience
-        = player.experience
-        - if player.level_up? && current_user.can_level_up?(player, current_community)
-          %a#level-up{ href: edit_player_path(id: player.id) }
-            = image_tag asset_path('level_up.png')
-        - elsif player.level_up? && !current_user.can_level_up?(player, current_community)
-          %a#level-up{ href: edit_player_path(id: player.id) }
-            = image_tag asset_path('level_up.png')
+        - if !player.experience.zero?
+          = player.experience
+          - if player.level_up? && current_user.can_level_up?(player, current_community)
+            %a#level-up{ href: edit_player_path(id: player.id) }
+              = image_tag asset_path('level_up.png')
+          - elsif player.level_up? && !current_user.can_level_up?(player, current_community)
+            %a#level-up{ href: edit_player_path(id: player.id) }
+              = image_tag asset_path('level_up.png')
