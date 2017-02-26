@@ -48,7 +48,19 @@ class Championship < ApplicationRecord
   end
 
   def matches_played_by(team)
-    fetch_matches_for(team).select(&:finish?).count
+    finish_matches(team).count
+  end
+
+  def win_matches(team)
+    finish_matches(team).select{ |match| match.winner?(team) }.count
+  end
+
+  def draw_matches(team)
+    finish_matches(team).select{ |match| match.draw?(team) }.count
+  end
+
+  def lost_matches(team)
+    matches_played_by(team) - win_matches(team) - draw_matches(team)
   end
 
   def calculate_points_by(team)
@@ -67,6 +79,10 @@ class Championship < ApplicationRecord
 
   def fetch_matches_for(team)
     matches.select{ |match| match.include_team?(team.id) }
+  end
+
+  def finish_matches(team)
+    fetch_matches_for(team).select(&:finish?)
   end
 
   def feth_feats_by(type, matches, team_id)

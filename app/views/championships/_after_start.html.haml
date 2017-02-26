@@ -2,12 +2,14 @@
   .row.row-header
     .col-xs-1
       Position
-    .col-xs-4
+    .col-xs-3
       Team Name
     .col-xs-1
       Points
     .col-xs-1
       Played
+    .col-xs-1
+      W/L/D
     .col-xs-1
       TD
     .col-xs-1
@@ -23,12 +25,14 @@
     .row.row-main
       .col-xs-1
         = index + 1
-      .col-xs-4
+      .col-xs-3
         = link_to team.name, team_path(team)
       .col-xs-1
         = @championship.calculate_points_by(team)
       .col-xs-1
         = @championship.matches_played_by(team)
+      .col-xs-1
+        = "#{@championship.win_matches(team)}/#{@championship.lost_matches(team)}/#{@championship.draw_matches(team)}"
       .col-xs-1
         = @championship.calculate_of('touchdown', team)
       .col-xs-1
