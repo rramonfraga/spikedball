@@ -1,40 +1,44 @@
 %section.container
-  %h1
-    = @team.name + ' - ' + @team.team.name + ' - ' + @team.user.name
+  .row
+    .col-xs-2
+      = image_tag asset_path("team_logos/#{@team.team.name}.jpg"), height: 120
+    .col-xs-10
+      %h1
+        = @team.name + ' - ' + @team.team.name + ' - ' + @team.user.name
 
-  %h2
-    Treasury:
-    = @team.treasury
+      %h2
+        Treasury:
+        = @team.treasury
 
-    Value:
-    = @team.value
+        Value:
+        = @team.value
 
-    = render 'team', team: @team
+  = render 'team', team: @team
 
-    - if current_user.can_edit?(@team, current_community)
-      - if @team.can_hire?
-        %a.btn.btn-blood{ href: new_team_player_path(team_id: params['id']) }
-          Hire Player
-      - if @team.buy_re_roll?
-        %a.btn.btn-blood{ href: add_re_roll_team_path(team_id: params['id']) }
-          = "Buy Re Roll (+#{@team.team.re_roll * 2})"
-      - if @team.buy_apothecary?
-        %a.btn.btn-blood{ href: add_apothecary_team_path(team_id: params['id']) }
-          Buy Apothecary (+50000)
-      - if @team.buy_freelance?
-        %a.btn.btn-blood{ href: add_freelance_team_path(team_id: params['id']) }
-          Add Freelance (Free)
-      %section
-        .row
-          = form_tag(fire_player_path, method: :post) do
-            .col-sm-1
-            .col-sm-3
-              FIRE A PLAYER:
-            .col-sm-4
-              = collection_select(:player, :id, @team.live_players, :id, :full_name, { include_blank: true }, { class: "form-control"} )
-            .col-sm-3
-              = submit_tag "FIRE!", data: { confirm: "FIRE A PLAYER! Are you sure?" }, class: "btn btn-lg btn-block btn-blood"
-            .col-sm-1
+  - if current_user.can_edit?(@team, current_community)
+    - if @team.can_hire?
+      %a.btn.btn-blood{ href: new_team_player_path(team_id: params['id']) }
+        Hire Player
+    - if @team.buy_re_roll?
+      %a.btn.btn-blood{ href: add_re_roll_team_path(team_id: params['id']) }
+        = "Buy Re Roll (+#{@team.team.re_roll * 2})"
+    - if @team.buy_apothecary?
+      %a.btn.btn-blood{ href: add_apothecary_team_path(team_id: params['id']) }
+        Buy Apothecary (+50000)
+    - if @team.buy_freelance?
+      %a.btn.btn-blood{ href: add_freelance_team_path(team_id: params['id']) }
+        Add Freelance (Free)
+    %section
+      .row
+        = form_tag(fire_player_path, method: :post) do
+          .col-sm-1
+          .col-sm-3
+            FIRE A PLAYER:
+          .col-sm-4
+            = collection_select(:player, :id, @team.live_players, :id, :full_name, { include_blank: true }, { class: "form-control"} )
+          .col-sm-3
+            = submit_tag "FIRE!", data: { confirm: "FIRE A PLAYER! Are you sure?" }, class: "btn btn-lg btn-block btn-blood"
+          .col-sm-1
 
 
   = render  partial: '/layouts/small_modal'

@@ -1,10 +1,24 @@
 %section.container
-  %h1
-    = @match.title
+  .row
+    .col-xs-1
+      = image_tag asset_path("team_logos/#{@match.host_team.team.name}.jpg"), height: 100
+    .col-xs-4
+      %h1
+        = @match.host_team.name
+      %h3
+        = @match.host_team.value.to_s
+    .col-xs-2
+      %h1 VS
 
-  %h2
-    = @match.host_team.value.to_s + ' VS ' + @match.visit_team.value.to_s
+    .col-xs-4
+      %h1
+        = @match.visit_team.name
+      %h3
+        = @match.visit_team.value.to_s
+    .col-xs-1
+      = image_tag asset_path("team_logos/#{@match.visit_team.team.name}.jpg"), height: 100
 
+%section.container
   = render 'teams/team', team: @match.host_team
   %br
   = render 'teams/team', team: @match.visit_team

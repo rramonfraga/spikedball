@@ -57,10 +57,26 @@
 
             .row
               - season.matches.each do |match|
-                .col-xs-9
-                  %a.match{ href: community_championship_match_path(id: match.id, championship_id: @championship.id, community_code: current_community.code) }
-                    = match.finish? ? match.title_result : match.title
-                .col-xs-3
-                  - if match.can_validate?(current_user) && !match.finish?
+                - if match.can_validate?(current_user) && !match.finish?
+                  .col-xs-9
+                    .row
+                      .col-xs-1
+                        = image_tag asset_path("team_logos/#{match.host_team.team.name}.jpg"), height: 25
+                      .col-xs-10
+                        %a.match{ href: community_championship_match_path(id: match.id, championship_id: @championship.id, community_code: current_community.code) }
+                          = match.finish? ? match.title_result : match.title
+                      .col-xs-1
+                        = image_tag asset_path("team_logos/#{match.visit_team.team.name}.jpg"), height: 25
+                  .col-xs-3
                     %a.match.btn.btn-blood{ href: new_community_championship_match_feat_path(championship_id: @championship.id, match_id: match.id, community_code: current_community.code) }
                       Validate
+                - else
+                  .col-xs-12
+                    .row
+                      .col-xs-1
+                        = image_tag asset_path("team_logos/#{match.host_team.team.name}.jpg"), height: 25
+                      .col-xs-10
+                        %a.match{ href: community_championship_match_path(id: match.id, championship_id: @championship.id, community_code: current_community.code) }
+                          = match.finish? ? match.title_result : match.title
+                      .col-xs-1
+                        = image_tag asset_path("team_logos/#{match.visit_team.team.name}.jpg"), height: 25
